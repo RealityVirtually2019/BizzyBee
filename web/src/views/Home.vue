@@ -8,13 +8,13 @@
 <script>
 // @ is an alias to /src
 import Planet from '@/components/Planet'
-import Flower from '@/components/Flower'
+import FlowerHolder from '@/components/FlowerHolder'
 
 export default {
   name: 'Home',
-    components: {
-      'b-planet': Planet,
-      'b-flower': Flower
-    }
+  components: {
+    'b-planet': Planet,
+    'b-flower': FlowerHolder,
+  },
 }
 </script>
