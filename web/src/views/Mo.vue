@@ -21,29 +21,28 @@
 // @ is an alias to /src
 import Flower from '@/components/Flower'
 
-let flowerdata = 
-{
-  moflower:{
+let flowerdata = {
+  moflower: {
     color: 0xff0000,
-    obj:["#papatest-gltf", "#monkey-gltf"],
-    mtl:["#bromeliads-mtl", "#"]
-    },
-  monkeyflower:{
-    color:0x00FF00,
-    obj:["#monkey"]
-  }
+    obj: ['#papatest-gltf', '#monkey-gltf'],
+    mtl: ['#bromeliads-mtl', '#'],
+  },
+  monkeyflower: {
+    color: 0x00ff00,
+    obj: ['#monkey'],
+  },
 }
 
 export default {
   name: 'Mo',
-  data(){
+  components: {
+    Flower,
+  },
+  data() {
     return {
       flowerdata,
       stage: 0,
     }
-  },
-  components: {
-    Flower,
   },
 }
 </script>
