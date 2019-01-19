@@ -1,6 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+
+import Entry from './views/Entry.vue'
+import Build from './views/Build.vue'
+import Gardener from './views/Gardener.vue'
+import Gardening from './views/Gardening.vue'
+import Garden from './views/Garden.vue'
+
+import EnterVR from './views/EnterVR.vue'
+import EnterAR from './views/EnterAR.vue'
+
 import Jason from './views/Jason.vue'
 import Mo from './views/Mo.vue'
 
@@ -12,6 +22,41 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/entry',
+      name: 'entry',
+      component: Entry,
+    },
+    {
+      path: '/build',
+      name: 'build',
+      component: Build,
+    },
+    {
+      path: '/gardener/:gardenKey',
+      name: 'Gardener',
+      component: Gardener,
+    },
+    {
+      path: '/gardening/:gardenKey',
+      name: 'Gardener',
+      component: Gardening,
+    },
+    {
+      path: '/garden/:linkKey',
+      name: 'Garden',
+      component: Garden,
+    },
+    {
+      path: '/enterVR/:linkKey',
+      name: 'EnterVR',
+      component: EnterVR,
+    },
+    {
+      path: '/enterAR/:linkKey',
+      name: 'EnterAR',
+      component: EnterAR,
     },
     {
       path: '/mo',

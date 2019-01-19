@@ -6,6 +6,18 @@ import './registerServiceWorker'
 
 import 'aframe'
 
+import './plugins/element.js'
+
+import VueFire from 'vuefire'
+Vue.use(VueFire)
+
+import Timeago from 'vue-timeago'
+Vue.use(Timeago)
+
+import VueGlide from 'vue-glide-js'
+import 'vue-glide-js/dist/vue-glide.css'
+Vue.use(VueGlide)
+
 Vue.config.productionTip = false
 
 new Vue({

@@ -1,11 +1,5 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/mo">Mo</router-link> |
-      <router-link to="/jason">Jason</router-link>
-    </div>
-    <router-view />
-  </div>
+  <div id="app"><router-view /></div>
 </template>
 
 <style lang="scss">
@@ -13,7 +7,6 @@
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 #nav {
