@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Jason from './views/Jason.vue'
+import Mo from './views/Mo.vue'
 
 Vue.use(Router)
 
@@ -10,6 +12,16 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/mo',
+      name: 'mo',
+      component: Mo,
+    },
+    {
+      path: '/jason',
+      name: 'jason',
+      component: Jason,
     },
     {
       path: '/about',
