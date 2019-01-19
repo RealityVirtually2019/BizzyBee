@@ -4,13 +4,16 @@
     <p>{{ garden.desc }}</p>
     <timeago :datetime="garden.sendItAt" />
     <p>See How it works</p>
-    <a-scene> <Planet></Planet> </a-scene>
-    <el-button>Add You Flower</el-button>
+    <el-button @click="shareGardener">Share</el-button>
+    <a-scene embedded> <Planet position="0 0 -13"></Planet> </a-scene>
+    <el-button @click="addFlower">Add You Flower</el-button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import Planet from '@/components/Planet'
+
 import { db } from '@/services/firebase'
 
 export default {
@@ -24,6 +27,9 @@ export default {
         readyCallback: () => {},
       },
     }
+  },
+  components: {
+    Planet,
   },
   data() {
     return {
@@ -46,5 +52,32 @@ export default {
   created() {
     // this.$bindAsObject('user', db.ref('links'), null, () => console.log('Ready fired!'))
   },
+  methods: {
+    addFlower() {
+      this.$router.push(`/gardening/${this.gardenKey}`)
+    },
+    shareGardener() {
+      if (navigator.share) {
+        navigator
+          .share({
+            title: `gARden For [${this.garden.recipient}]`,
+            text: this.desc,
+            url: window.location.href,
+          })
+          .then(() => console.log('Successful share'))
+          .catch(error => console.log('Error sharing', error))
+      } else {
+        alert('Share function is not ready for IOS.')
+      }
+    },
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+a-scene {
+  display: block;
+  height: 50vh;
+  width: 100%;
+}
+</style>

@@ -7,7 +7,7 @@
     <vue-glide
       v-model="imgIdx"
       :options="{
-        peek: 100,
+        peek: 80,
         perView: 1,
         dragThreshold: 20,
         swipeThreshold: 20,
