@@ -1,5 +1,5 @@
 <template>
-  <a-sphere position="0 1.25 -5" radius="4" color="#edf600"></a-sphere>
+  <a-sphere position="0 1.25 -5" radius="1" color="#EF2D5E"></a-sphere>
 </template>
 
 <script>
