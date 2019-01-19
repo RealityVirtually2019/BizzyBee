@@ -1,9 +1,8 @@
 <template>
     <a-sphere position="0 -7 -7" :radius="planetRadius" color="#EF2D5E">
-        <b-flower :planetRadius="planetRadius" :offsetX="offsetX" :offsetY="offsetY"></b-flower>
         <b-flower
-                v-for="(msg, idx) in msgs" :key="idx"
-                :planetRadius="planetRadius" :offsetX="offsetX" :offsetY="offsetY" :stage="randomStage(idx)"></b-flower>
+                v-for="(msg, idx) in popMsgs" :key="idx"
+                :planetRadius="planetRadius" :type="msg.flower" :stage="randomStage(idx)"></b-flower>
     </a-sphere>
 </template>
 
@@ -16,8 +15,6 @@
         data() {
             return {
                 planetRadius: 7,
-                offsetX: 0,
-                offsetY: 0,
                 welcomeText: 'Welcome to the home of the Bee',
                 msgs: [
                     {
@@ -44,7 +41,7 @@
                         name: 'Jason',
                         msg: 'Hope your insurance is paid up!',
                         flower: 1
-                    },
+                    }
                 ]
 
             }
@@ -53,13 +50,21 @@
             'b-flower': FlowerHolder
         },
         mounted() {
-            var rotation = 360;
-            this.offsetX = Math.random() * rotation;
-            this.offsetY = Math.random() * rotation;
-            console.log('this.offsetX:', this.offsetX);
+        },
+        computed: {
+            popMsgs(){
+                let MAX_FLOWERS = 100;
+                let msgs = [];
+
+                for(var i = 0; i < MAX_FLOWERS; i++){
+                    msgs.push(this.msgs[i % this.msgs.length]);
+                }
+
+                return msgs;
+            }
         },
         methods: {
-            randomStage(idx){
+            randomStage(idx) {
                 return idx % 3
             },
         }
