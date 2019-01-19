@@ -1,9 +1,12 @@
 <template>
-    <a-entity :rotation="`${offsetX} 0 0`">
-        <a-entity :rotation="`0 0 ${offsetY}`">
-            <a-entity :position="`0 ${hoverDistance} 0`">
-                <a-plane ref="flowerHolder" :material="`side: double; color: #FFFFFF; transparent: true; opacity: 1;`"
-                         :width="`${flowerWidth}`" :height="`${flowerHeight}`" :src="`${flowerUrl}`"></a-plane>
+    <a-entity name='x-axis' :rotation="`${offsetX} 0 0`">
+        <a-entity name='y-axis' :rotation="`0 0 ${offsetY}`">
+            <a-entity name='planet-surface' :position="`0 ${hoverDistance} 0`">
+                <a-gltf-model name='flower-holder' ref="flowerHolder" src="models/example_flower.glb"></a-gltf-model>
+                <!--
+                                <a-plane name='flower-holder' ref="flowerHolder" :material="`side: double; color: #FFFFFF; transparent: true; opacity: 1;`"
+                                         :width="`${flowerWidth}`" :height="`${flowerHeight}`" :src="`${flowerUrl}`"></a-plane>
+                -->
             </a-entity>
         </a-entity>
     </a-entity>
@@ -41,6 +44,14 @@
                 type: Number,
                 default: 0
             },
+            rotX: {
+                type: Number,
+                default: 0
+            },
+            rotY: {
+                type: Number,
+                default: 0
+            },
         },
         computed: {
             rotationX() {
@@ -53,15 +64,16 @@
         mounted() {
             console.log('flowerHolder:', this.$refs.flowerHolder.object3D);
 
-            var rotation = 360;
-            this.offsetX = Math.random() * rotation;
-            this.offsetY = Math.random() * rotation;
-
             // Once we have the final object, work on the sizing
-            this.hoverDistance = this.planetRadius + (this.$refs.flowerHolder.getAttribute('height')) * 0.5;
+            // this.hoverDistance = this.planetRadius + (this.$refs.flowerHolder.getAttribute('height')) * 0.5;
+            this.hoverDistance = this.planetRadius + .65;
+
+            // set the rotation of the objects
+            this.offsetX = this.rotX;
+            this.offsetY = this.rotY;
 
             // set the flower type
-            console.log('flower stage:', this.type, this.stage);
+            // console.log('flower', this.$refs.flowerHolder.object3D,'stage:', this.type, this.stage);
             this.flowerUrl = this.flowerPaths[this.type][this.stage];
             switch (this.type) {
                 case 0:

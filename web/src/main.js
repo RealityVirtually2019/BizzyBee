@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
-import 'aframe'
+// import 'aframe'
 
 Vue.config.productionTip = false
 
