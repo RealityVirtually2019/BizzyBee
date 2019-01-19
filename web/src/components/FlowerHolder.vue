@@ -62,7 +62,7 @@
             },
         },
         mounted() {
-            console.log('flowerHolder:', this.$refs.flowerHolder.object3D);
+            // console.log('flowerHolder:', this.$refs.flowerHolder.object3D);
 
             // Once we have the final object, work on the sizing
             // this.hoverDistance = this.planetRadius + (this.$refs.flowerHolder.getAttribute('height')) * 0.5;

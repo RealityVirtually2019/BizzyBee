@@ -53,7 +53,7 @@
         },
         computed: {
             popMsgs(){
-                let MAX_FLOWERS = 100;
+                let MAX_FLOWERS = 25;
                 let MAX_ROTATION = 360;
                 let MIN_DISTANCE = 0.88;
                 let DEGREES_TO_RADIANS = Math.PI / 180;
@@ -106,7 +106,7 @@
                     // loop through until we've hit all of them
                     } while( testIndex < msgs.length );
 
-                    console.log('minDistance:', minDistance);
+                    // console.log('minDistance:', minDistance);
 
                     // if we've found one too small, decrement the loop counter
                     if(testFailed){
@@ -140,6 +140,9 @@
             randomStage(idx) {
                 return idx % 3
             },
+            turnToLook(){
+                // draw a line from the camera to the planet and see if we're too far above or below the planet
+            }
         }
 
     }
