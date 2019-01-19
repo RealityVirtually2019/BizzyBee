@@ -56,8 +56,6 @@ export default {
         )
     },
   },
-  created() {
-    // this.$bindAsObject('user', db.ref('links'), null, () => console.log('Ready fired!'))
-  },
+  created() {},
 }
 </script>

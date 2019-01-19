@@ -14,6 +14,13 @@ Vue.use(VueFire)
 import Timeago from 'vue-timeago'
 Vue.use(Timeago)
 
+import VuePictureSwipe from 'vue-picture-swipe'
+Vue.component('vue-picture-swipe', VuePictureSwipe)
+
+import VueGlide from 'vue-glide-js'
+import 'vue-glide-js/dist/vue-glide.css'
+Vue.use(VueGlide)
+
 Vue.config.productionTip = false
 
 new Vue({

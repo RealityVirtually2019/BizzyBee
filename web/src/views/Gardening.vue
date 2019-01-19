@@ -1,21 +1,52 @@
 <template>
   <div class="gardener">
-    <h4>This for {{ garden.name }}</h4>
-    <p>{{ garden.desc }}</p>
+    <h2>BizzyBee</h2>
+    <h4>This 123 for {{ garden.name }}</h4>
     <timeago :datetime="garden.sendItAt" />
-    <a-scene> <Planet></Planet> </a-scene>
-    <CompactColorPicker v-model="color" />
-    <p></p>
-    <el-button @click="putSeed">Put the seed</el-button>
+
+    <vue-glide
+      v-model="imgIdx"
+      :options="{
+        peek: 60,
+        perView: 1,
+        dragThreshold: 40,
+        swipeThreshold: 20,
+        animationDuration: 70,
+      }"
+    >
+      <vue-glide-slide v-for="img in imgs" :key="img">
+        <img class="img" :src="img" alt="" />
+      </vue-glide-slide>
+    </vue-glide>
+    <p>{{ imgIdx }}</p>
+
+    <div id="form">
+      <el-form label-width="200px">
+        <el-form-item label="Name">
+          <el-input v-model="name" placeholder="Who"></el-input>
+        </el-form-item>
+        <el-form-item label="Your Message (Optional)">
+          <el-input
+            v-model="msg"
+            type="textarea"
+            :rows="2"
+            placeholder="What's this for someone for some reason"
+          >
+          </el-input>
+        </el-form-item>
+      </el-form>
+      <el-button @click="putSeed">Put the seed</el-button>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Planet from '@/components/Planet'
-import { Compact } from 'vue-color'
 
 import { db } from '@/services/firebase'
+
+import { Glide, GlideSlide } from 'vue-glide-js'
 
 export default {
   name: 'Gardener',
@@ -31,15 +62,32 @@ export default {
   },
   components: {
     Planet,
-    CompactColorPicker: Compact,
+    Glide,
+    GlideSlide,
   },
   data() {
     return {
       dbGarden: {},
+      name: '',
       msg: '',
       color: {
         hex: '#194d33',
       },
+      imgIdx: 2,
+      imgs: [
+        'https://dummyimage.com/800/100000/f0f0f0',
+        'https://dummyimage.com/800/001000/00f000',
+        'https://dummyimage.com/800/000010/0000f0',
+        'https://dummyimage.com/800/000000/f0f000',
+        'https://dummyimage.com/800/000000/00f000',
+        'https://dummyimage.com/800/000000/00ff00',
+        'https://dummyimage.com/800/000000/0000ff',
+        'https://dummyimage.com/800/000000/f0000f',
+        'https://dummyimage.com/800/000000/0fff0f',
+        'https://dummyimage.com/800/000000/f0f000',
+        'https://dummyimage.com/800/000000/0f00f0',
+        'https://dummyimage.com/800/000000/f00f0f',
+      ],
     }
   },
   computed: {
@@ -49,14 +97,14 @@ export default {
     gardenKey() {
       return this.$route.params.gardenKey
     },
+    imgId() {
+      return this.imgIdx
+    },
   },
   watch: {
     $route() {
       // react to route changes...
     },
-  },
-  created() {
-    // this.$bindAsObject('user', db.ref('links'), null, () => console.log('Ready fired!'))
   },
   methods: {
     putSeed() {
@@ -64,9 +112,20 @@ export default {
       const msg = {
         msg: this.msg,
         color: this.color,
+        imgId: this.imgId,
       }
       msgsRef.push(msg)
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.img {
+  max-width: 100%;
+}
+
+#form {
+  clear: both;
+}
+</style>
