@@ -8,6 +8,7 @@
 <script>
 // @ is an alias to /src
 import Planet from '@/components/Planet'
+import Flower from '@/components/Flower'
 
 export default {
   name: 'Home',
