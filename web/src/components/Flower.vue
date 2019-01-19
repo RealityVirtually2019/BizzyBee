@@ -3,7 +3,7 @@
     <!-- Using the asset management system. -->
     <a-entity scale="0.2 0.2 0.2" position="0 1.4 -5">
       <a-obj-model class="flowermodel" src="#bromeliads-obj" mtl="#bromeliads-mtl"></a-obj-model>
-      <a-gltf-model class="gltfmodel" src="#papatest-gltf"></a-gltf-model>
+      <a-gltf-model ref="modelgltf" class="gltfmodel" src="#papatest-gltf"></a-gltf-model>
     </a-entity>
 
 
@@ -46,23 +46,26 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$el.getElementsByClassName("gltfmodel")[0]) // I'm text inside the component.
+    this.$nextTick(function () {
+      console.log(this.$el.getElementsByClassName("gltfmodel")[0]) // I'm text inside the component.
 
-     let base = document.querySelector('a-assets')
-     let model = this.$el.getElementsByClassName("gltfmodel")
-
-     base.addEventListener('loaded', function() {
-        console.log('loaded');
-        if(model != undefined) {
-          let bloomBone = model.object3D.children[0].children.filter(mesh => mesh.name == "Papa")
-          if(bloomBone) {
-            console.log("Bloom Bone - ", bloomBone)
-          } else {
-            console.log("No Bloom Bone found")
+      let base = document.querySelector('a-assets')
+      let model = this.$refs.modelgltf //this.$el.getElementsByClassName("gltfmodel")[0]
+      
+      base.addEventListener('loaded', function() {
+          console.log('loaded');
+          if(model != undefined) {
+            let bloomBone = model.object3D.children[0].children.filter(mesh => mesh.name == "Papa")
+            if(bloomBone) {
+              console.log("Bloom Bone - ", bloomBone)
+            } else {
+              console.log("No Bloom Bone found")
+            }
           }
-        }
       });
+    })
   }
+
 }
 </script>
 
