@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "aframe": "^0.8.2",
+    "gsap": "^2.0.2",
     "element-ui": "^2.4.5",
     "jquery": "^3.3.1",
     "register-service-worker": "^1.5.2",
