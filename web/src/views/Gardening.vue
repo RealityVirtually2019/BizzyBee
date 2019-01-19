@@ -7,30 +7,32 @@
     <vue-glide
       v-model="imgIdx"
       :options="{
-        peek: 60,
+        peek: 100,
         perView: 1,
-        dragThreshold: 40,
+        dragThreshold: 20,
         swipeThreshold: 20,
         animationDuration: 70,
       }"
     >
       <vue-glide-slide v-for="img in imgs" :key="img">
-        <img class="img" :src="img" alt="" />
+        <div class="imgContainer">
+          <img class="img" :src="`img/flowers/${img}`" alt="" />
+        </div>
       </vue-glide-slide>
     </vue-glide>
     <p>{{ imgIdx }}</p>
 
     <div id="form">
-      <el-form label-width="200px">
+      <el-form label-width="100px">
         <el-form-item label="Name">
           <el-input v-model="name" placeholder="Who"></el-input>
         </el-form-item>
-        <el-form-item label="Your Message (Optional)">
+        <el-form-item label="Your Message">
           <el-input
             v-model="msg"
             type="textarea"
             :rows="2"
-            placeholder="What's this for someone for some reason"
+            placeholder=" (Optional) What's this for someone for some reason"
           >
           </el-input>
         </el-form-item>
@@ -42,8 +44,6 @@
 
 <script>
 // @ is an alias to /src
-import Planet from '@/components/Planet'
-
 import { db } from '@/services/firebase'
 
 import { Glide, GlideSlide } from 'vue-glide-js'
@@ -61,7 +61,6 @@ export default {
     }
   },
   components: {
-    Planet,
     Glide,
     GlideSlide,
   },
@@ -70,23 +69,17 @@ export default {
       dbGarden: {},
       name: '',
       msg: '',
-      color: {
-        hex: '#194d33',
-      },
       imgIdx: 2,
       imgs: [
-        'https://dummyimage.com/800/100000/f0f0f0',
-        'https://dummyimage.com/800/001000/00f000',
-        'https://dummyimage.com/800/000010/0000f0',
-        'https://dummyimage.com/800/000000/f0f000',
-        'https://dummyimage.com/800/000000/00f000',
-        'https://dummyimage.com/800/000000/00ff00',
-        'https://dummyimage.com/800/000000/0000ff',
-        'https://dummyimage.com/800/000000/f0000f',
-        'https://dummyimage.com/800/000000/0fff0f',
-        'https://dummyimage.com/800/000000/f0f000',
-        'https://dummyimage.com/800/000000/0f00f0',
-        'https://dummyimage.com/800/000000/f00f0f',
+        'Blue-Flower-2.png',
+        'Blue-Flower-3.png',
+        'bulb-flower-2.png',
+        'bulb-flower-3-blue.png',
+        'bulb-flower-3-red.png',
+        'flower_1_bloom.png',
+        'flower_1_sapling.png',
+        'flower_1_sprout.png',
+        'flower_2_bloom.png',
       ],
     }
   },
@@ -97,8 +90,9 @@ export default {
     gardenKey() {
       return this.$route.params.gardenKey
     },
-    imgId() {
-      return this.imgIdx
+    imgUrl() {
+      const imgFile = this.imgs[this.imgIdx]
+      return `img/flowers/${imgFile}`
     },
   },
   watch: {
@@ -110,19 +104,30 @@ export default {
     putSeed() {
       const msgsRef = db.ref(`gardens/${this.gardenKey}/msgs`)
       const msg = {
+        name: this.name,
         msg: this.msg,
-        color: this.color,
-        imgId: this.imgId,
+        flower: this.imgIdx,
       }
-      msgsRef.push(msg)
+      msgsRef.push(msg).then(() => {
+        console.log('Garden has been built!')
+        this.$router.push(`/gardener/${this.gardenKey}`)
+      })
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.img {
-  max-width: 100%;
+.imgContainer {
+  $h: 200px;
+  width: 100%;
+  height: $h;
+  overflow: hidden;
+  text-align: center;
+
+  .img {
+    max-height: $h;
+  }
 }
 
 #form {
