@@ -1,0 +1,28 @@
+language: node_js
+node_js: '8'
+cache: yarn
+script:
+  - cd web
+  - yarn
+  - yarn lint
+  - yarn build
+git:
+  depth: 3
+notifications:
+  email: false
+
+
+
+# BUILD DEPLOY
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local-dir: web/dist
+  github_token: $GITHUB_TOKEN
+  keep-history: true
+  verbose: true
+  on:
+    branch: 
+      - master
+      - setup-ci
+
