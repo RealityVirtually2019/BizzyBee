@@ -3,6 +3,12 @@
 </template>
 
 <style lang="scss">
+body {
+  margin: 0px;
+  user-select: none;
+  overflow: hidden;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
