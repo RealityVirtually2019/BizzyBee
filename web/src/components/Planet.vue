@@ -22,9 +22,10 @@
             'b-flower': FlowerHolder
         },
         mounted() {
-            var rotation = Math.PI * 2;
-            this.offsetX = Math.random() * rotation - rotation * 0.5;
-            this.offsetY = Math.random() * rotation - rotation * 0.5;
+            var rotation = 360;
+            this.offsetX = Math.random() * rotation;
+            this.offsetY = Math.random() * rotation;
+            console.log('this.offsetX:', this.offsetX);
         },
 
     }

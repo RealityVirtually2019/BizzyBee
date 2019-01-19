@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "aframe": "^0.8.2",
+    "gsap": "^2.0.2",
     "register-service-worker": "^1.5.2",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
