@@ -1,8 +1,9 @@
 <template>
     <a-sphere position="0 -7 -7" :radius="planetRadius" color="#EF2D5E">
-        <b-flower
+        <b-flowerHolder
                 v-for="(msg, idx) in popMsgs" :key="idx"
-                :planetRadius="planetRadius" :type="msg.flower" :rotX="msg.rotationX" :rotY="msg.rotationY" :stage="randomStage(idx)"></b-flower>
+                :planetRadius="planetRadius" :type="msg.flower" :rotX="msg.rotationX" :rotY="msg.rotationY"
+                :stage="randomStage(idx)"></b-flowerHolder>
     </a-sphere>
 </template>
 
@@ -47,21 +48,22 @@
             }
         },
         components: {
-            'b-flower': FlowerHolder
+            'b-flowerHolder': FlowerHolder
         },
         mounted() {
         },
         computed: {
-            popMsgs(){
-                let MAX_FLOWERS = 25;
+            popMsgs() {
+                let MAX_FLOWERS = 5;
                 let MAX_ROTATION = 360;
                 let MIN_DISTANCE = 0.88;
                 let DEGREES_TO_RADIANS = Math.PI / 180;
                 let msgs = [];
-                let msgIndex, minDistance, msgMatrix, testMatrix, rotationX, rotationY, testIndex, testFailed, testVector, msgVector;
+                let msgIndex, minDistance, msgMatrix, testMatrix, rotationX, rotationY, testIndex, testFailed,
+                    testVector, msgVector;
 
                 // for each flower, generate the angles that the flowers will stick out and space them to avoid clumping
-                for(var i = 0; i < MAX_FLOWERS; i++){
+                for (var i = 0; i < MAX_FLOWERS; i++) {
                     // start testing from index 0 to the length
                     testIndex = 0;
 
@@ -71,26 +73,26 @@
                     // set the distance to max for starters
                     minDistance = 0;
 
-                    do{
+                    do {
                         // generate a random rotation and add it to the array
                         rotationX = Math.random() * MAX_ROTATION;
                         rotationY = Math.random() * MAX_ROTATION;
 
                         // check if the rotation is far enough away from the others and add their
-                        if(msgs.length){
+                        if (msgs.length) {
                             msgMatrix = (new THREE.Matrix4()).makeRotationFromEuler(new THREE.Euler(rotationX * DEGREES_TO_RADIANS, rotationY * DEGREES_TO_RADIANS, 0));
                             msgVector = (new THREE.Vector3(0, 0, -1)).transformDirection(msgMatrix);
                             testMatrix = (new THREE.Matrix4()).makeRotationFromEuler(new THREE.Euler(msgs[testIndex].rotationX * DEGREES_TO_RADIANS, msgs[testIndex].rotationX * DEGREES_TO_RADIANS, 0));
                             testVector = (new THREE.Vector3(0, 0, -1)).transformDirection(testMatrix);
 
                             // update the min angular distance encountered
-                            minDistance = Math.max( minDistance, msgVector.dot(testVector));
+                            minDistance = Math.max(minDistance, msgVector.dot(testVector));
                         }
 
                         // minDistance
 
                         // if we've found a distance too small, break and retry
-                        if(minDistance >= MIN_DISTANCE){
+                        if (minDistance >= MIN_DISTANCE) {
                             // we failed, please try again :(
                             testFailed = true;
 
@@ -103,13 +105,13 @@
                             testIndex++;
                         }
 
-                    // loop through until we've hit all of them
-                    } while( testIndex < msgs.length );
+                        // loop through until we've hit all of them
+                    } while (testIndex < msgs.length);
 
                     // console.log('minDistance:', minDistance);
 
                     // if we've found one too small, decrement the loop counter
-                    if(testFailed){
+                    if (testFailed) {
                         i--;
                     }
                     // otherwise add the flower to the msgs array
@@ -140,7 +142,7 @@
             randomStage(idx) {
                 return idx % 3
             },
-            turnToLook(){
+            turnToLook() {
                 // draw a line from the camera to the planet and see if we're too far above or below the planet
             }
         }

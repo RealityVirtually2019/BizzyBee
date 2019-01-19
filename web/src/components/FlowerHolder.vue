@@ -2,17 +2,20 @@
     <a-entity name='x-axis' :rotation="`${offsetX} 0 0`">
         <a-entity name='y-axis' :rotation="`0 0 ${offsetY}`">
             <a-entity name='planet-surface' :position="`0 ${hoverDistance} 0`">
-                <a-gltf-model name='flower-holder' ref="flowerHolder" src="models/example_flower.glb"></a-gltf-model>
-                <!--
-                                <a-plane name='flower-holder' ref="flowerHolder" :material="`side: double; color: #FFFFFF; transparent: true; opacity: 1;`"
-                                         :width="`${flowerWidth}`" :height="`${flowerHeight}`" :src="`${flowerUrl}`"></a-plane>
-                -->
+                <b-flower></b-flower>
+                    <!--<a-gltf-model name='flower-holder' ref="flowerHolder" src="models/example_flower.glb"></a-gltf-model>-->
+                    <!--
+                                    <a-plane name='flower-holder' ref="flowerHolder" :material="`side: double; color: #FFFFFF; transparent: true; opacity: 1;`"
+                                             :width="`${flowerWidth}`" :height="`${flowerHeight}`" :src="`${flowerUrl}`"></a-plane>
+                    -->
             </a-entity>
         </a-entity>
     </a-entity>
 </template>
 
 <script>
+    import Flower from '@/components/Flower'
+
     // @ is an alias to /src
     export default {
         name: 'FlowerHolder',
@@ -30,6 +33,9 @@
                 flowerHeight: 0,
                 flowerWidth: 0,
             }
+        },
+        components: {
+            'b-flower': Flower
         },
         props: {
             planetRadius: {
@@ -66,7 +72,10 @@
 
             // Once we have the final object, work on the sizing
             // this.hoverDistance = this.planetRadius + (this.$refs.flowerHolder.getAttribute('height')) * 0.5;
-            this.hoverDistance = this.planetRadius + .65;
+            // this.hoverDistance = this.planetRadius + .65;
+            this.hoverDistance = this.planetRadius;
+
+            // this.
 
             // set the rotation of the objects
             this.offsetX = this.rotX;
