@@ -8,19 +8,23 @@ self.__precacheManifest = [
     "url": "js/chunk-vendors.4d8aa2bd.js"
   },
   {
-    "revision": "f0692e584cc2611c5a8c",
-    "url": "js/app.683c5332.js"
+    "revision": "ea8e0c305fae414bd780",
+    "url": "js/app.15fe53af.js"
   },
   {
     "revision": "6c7f4975b6f3237771b8",
     "url": "js/about.7adab637.js"
   },
   {
-    "revision": "f749b69b85d54100a064f9efda5c70c0",
+    "revision": "5e8fbda3babbedb1ffb810168ab94ae6",
     "url": "index.html"
   },
   {
-    "revision": "f0692e584cc2611c5a8c",
+    "revision": "02cfb612a6edfcd4feeb588181eb705c",
+    "url": "img/buzzy-bee-logo.jpg"
+  },
+  {
+    "revision": "ea8e0c305fae414bd780",
     "url": "css/app.ac906db3.css"
   }
 ];
