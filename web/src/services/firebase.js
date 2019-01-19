@@ -13,3 +13,4 @@ const config = {
 export const FirebaseApp = Firebase.initializeApp(config)
 
 export let db = FirebaseApp.database()
+export let storage = FirebaseApp.storage()
