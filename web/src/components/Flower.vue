@@ -53,7 +53,7 @@ export default {
 
         let model = this.$refs.modelgltf
         if(model != undefined) {
-          let bloomBones = model.object3D.children[0].children.filter(mesh => mesh.name == "Papa")
+          let bloomBones = model.object3D.children[0].children.filter(mesh => mesh.name.includes("Papa"))
           for (var bloomBone in bloomBones) {
             if(bloomBone) {
               console.log("Bloom Bone - ", bloomBone)
