@@ -1,7 +1,7 @@
 <template>
   <a-scene>
-    <a-sphere position="0 1.25 -5" radius="3.5" color="#EF2D5E"></a-sphere>
-    <a-sky color="#ECECEC"></a-sky>
+    <a-sphere position="0 1.25 -5" radius="3.5" color="#66C39e"></a-sphere>
+    <a-sky color="#cc98c5"></a-sky>
   </a-scene>
 </template>
 

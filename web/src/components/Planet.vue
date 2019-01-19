@@ -6,5 +6,8 @@
 // @ is an alias to /src
 export default {
   name: 'Planet',
+  data: {
+      welcomeText:'Welcome to the home of the Bee'
+  }
 }
 </script>
