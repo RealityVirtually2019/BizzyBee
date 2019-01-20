@@ -50,7 +50,7 @@
           >
           </el-input>
         </el-form-item>
-        <el-form-item label="Record Voice">
+        <el-form-item label="Record Voice (5 secs)">
           <el-button v-if="recorder" @click="recordVoice">
             Record Voice
           </el-button>
