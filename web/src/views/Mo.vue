@@ -27,7 +27,7 @@ let flowerdata =
     color: 0xff0000,
     obj:["#papatest-gltf", "#monkey-gltf"],
     mtl:["#bromeliads-mtl", "#"],
-    ps:["color: #EF0000,#44CC00; blending: 0", "color: #000000,#FF0000"]
+    ps:["color: #EF0000,#44CC00; blending: 1", "color: #000000,#FF0000; blending: 1"]
     },
   monkeyflower:{
     color:0x00FF00,
