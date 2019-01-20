@@ -9,7 +9,7 @@
     </a-assets>
 
     <!-- Planet that grows everything -->
-    <b-planet autospin></b-planet>
+    <b-planet></b-planet>
 
     <a-sky color="#ECECEC"></a-sky>
 

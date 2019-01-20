@@ -2,13 +2,10 @@
     <a-entity name='x-axis' :rotation="`${offsetX} 0 0`">
         <a-entity name='y-axis' :rotation="`0 0 ${offsetY}`">
             <a-entity name='planet-surface' :position="`0 ${hoverDistance} 0`">
-                <b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"
+                <b-flower :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="ps"
                           :play="play"></b-flower>
-                <!--<a-gltf-model name='flower-holder' ref="flowerHolder" src="models/example_flower.glb"></a-gltf-model>-->
-                <!--
-                                        <a-plane name='flower-holder' ref="flowerHolder" :material="`side: double; color: #FFFFFF; transparent: true; opacity: 1;`"
-                                                 :width="`${flowerWidth}`" :height="`${flowerHeight}`" :src="`${flowerUrl}`"></a-plane>
-                        -->
+                <!--<b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"-->
+                          <!--:play="play"></b-flower>-->
             </a-entity>
         </a-entity>
     </a-entity>
@@ -76,7 +73,7 @@
                         color: 0xff0000,
                         obj: ["#bromeliads-obj", "#papatest-gltf", "#monkey-gltf"],
                         mtl: ["#bromeliads-mtl", "#", "#" ],
-                        ps: ["preset: dust; color: #EF0000,#44CC00; blending: 1; particleCount: 10", "preset: dust; color: #000000,#FF0000; blending: 1; particleCount: 10"]
+                        ps: ["color: #EF0000,#44CC00; blending: 1; particleCount: 10", "color: #EF0000,#44CC00; blending: 1; particleCount: 10", "color: #000000,#FF0000; blending: 1; particleCount: 10"]
                     },
                     monkeyflower: {
                         color: 0x00FF00,
