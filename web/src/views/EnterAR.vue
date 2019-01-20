@@ -1,13 +1,11 @@
 <template>
-  <div class="enterAR">
-    <a-scene> <Planet></Planet> </a-scene>
-    <div class="header">
-      <h1 class="title">BizzyBee</h1>
-      <p>Hi {{ garden.name }}</p>
-      <p>{{ garden.desc }}</p>
-    </div>
-    <p></p>
-  </div>
+  <a-scene embedded arjs='sourceType: webcam;'>
+        <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+        <a-entity position="0 1.5 0" scale="0.18 0.18 0.18">
+          <Planet></Planet>
+        </a-entity>
+        <a-marker-camera preset='hiro'></a-marker-camera>
+    </a-scene>
 </template>
 
 <script>
@@ -73,11 +71,11 @@ export default {
   text-shadow: 1px 1px 4px #00000015;
 }
 
-a-scene {
+/* a-scene {
   position: fixed;
   display: block;
   bottom: 0px;
   height: 100vh;
   width: 100%;
-}
+} */
 </style>
