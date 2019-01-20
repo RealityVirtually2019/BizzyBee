@@ -3,7 +3,7 @@
     <!-- Using the asset management system. -->
       <a-entity ref="localspace" scale="1 1 1">
         <!-- <a-obj-model class="flowermodel" src="#bromeliads-obj" mtl="#bromeliads-mtl"></a-obj-model> -->
-        <a-gltf-model ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-gltf-model>
+        <a-collada-model ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-collada-model>
         <a-entity ref="parsys" :visible="playing"></a-entity>
       </a-entity>
   </a-entity>
@@ -74,9 +74,10 @@ mounted() {
                             var psys_holder = this.$refs.parsys;
                             var psys = document.createElement("a-entity");
 
-                            psys.object3D.position.set(bloomBones[bloomBone].position.x, bloomBones[bloomBone].position.y, bloomBones[bloomBone].position.z)
+                            let unitfix = 100
+                            psys.object3D.position.set(bloomBones[bloomBone].position.x/100, bloomBones[bloomBone].position.y/100, bloomBones[bloomBone].position.z/100)
                             if(bloomBones[bloomBone].rotation != undefined) {
-                                psys.object3D.rotation.set(bloomBones[bloomBone].rotation.x, bloomBones[bloomBone].rotation.y, bloomBones[bloomBone].rotation.z)
+                                psys.object3D.rotation.set(bloomBones[bloomBone].rotation.x/100, bloomBones[bloomBone].rotation.y/100, bloomBones[bloomBone].rotation.z/100)
                             }
 
                             var att = document.createAttribute("particle-system");       // Create a "class" attribute
