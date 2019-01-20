@@ -1,13 +1,25 @@
 <template>
   <a-scene>
     <a-assets>
-      <a-asset-item id="BubingaTreeBloom-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeBloom.gltf"></a-asset-item>
-      <a-asset-item id="BubingaTreeSapling-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSapling.gltf"></a-asset-item>
-      <a-asset-item id="BubingaTreeSprout-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSprout.gltf"></a-asset-item>
+        <a-asset-item id="Flower_3_bloom-dae" src="./flowers/Flower1/Flower_3_bloom.dae"></a-asset-item>
+        <a-asset-item id="Flower_3_sapling-dae" src="./flowers/Flower1/Flower_3_sapling.dae"></a-asset-item>
+        <a-asset-item id="Flower_3_sprout-dae" src="./flowers/Flower1/Flower_3_sprout.dae"></a-asset-item>
 
-      <a-asset-item id="AppleTree_Bloom-gltf" src="./flowers/AppleTree_gltf/AppleTree_Bloom.gltf"></a-asset-item>
-      <a-asset-item id="AppleTree_Sapling-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sapling.gltf"></a-asset-item>
-      <a-asset-item id="AppleTree_Sprout-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sprout.gltf"></a-asset-item>
+        <a-asset-item id="Flower_4_bloom-dae" src="./flowers/Flower2/Flower_4_bloom.dae"></a-asset-item>
+        <a-asset-item id="Flower_4_sapling-dae" src="./flowers/Flower2/Flower_4_sapling.dae"></a-asset-item>
+        <a-asset-item id="Flower_4_sprout-dae" src="./flowers/Flower2/Flower_4_sprout.dae"></a-asset-item>
+
+        <a-asset-item id="Flower_5_bloom-dae" src="./flowers/Flower3/flower_5_bloom.dae"></a-asset-item>
+        <a-asset-item id="Flower_5_sapling-dae" src="./flowers/Flower3/flower_5_sapling.dae"></a-asset-item>
+        <a-asset-item id="Flower_5_sprout-dae" src="./flowers/Flower3/flower_5_sprout.dae"></a-asset-item>
+
+        <a-asset-item id="BubingaTreeBloom-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeBloom.gltf"></a-asset-item>
+        <a-asset-item id="BubingaTreeSapling-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSapling.gltf"></a-asset-item>
+        <a-asset-item id="BubingaTreeSprout-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSprout.gltf"></a-asset-item>
+
+        <a-asset-item id="AppleTree_Bloom-gltf" src="./flowers/AppleTree_gltf/AppleTree_Bloom.gltf"></a-asset-item>
+        <a-asset-item id="AppleTree_Sapling-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sapling.gltf"></a-asset-item>
+        <a-asset-item id="AppleTree_Sprout-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sprout.gltf"></a-asset-item>
     </a-assets>
 
     <a-sky color="#ECECEC"></a-sky>
@@ -27,7 +39,7 @@
       <b-flowerHolder
         v-for="(msg, idx) in popMsgs" :key="idx"
         :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
-        :rot-y="msg.rotationY" :voice-url="msg.voiceUrl" :msg="`${msg.msg} \n by [${msg.name}]`"
+        :rot-y="msg.rotationY" :voiceurl="msg.voiceurl" :msg="`${msg.msg} \n by [${msg.name}]`"
         :stage="randomStage(idx)"></b-flowerHolder>
       <a-sphere :radius="5" class="clickable"></a-sphere>
     </a-sphere>
@@ -56,6 +68,7 @@ export default {
   },
   data() {
     return {
+        soundtrack:null,
       planetRadius: 7,
       msgsD: [
         {
@@ -82,7 +95,7 @@ export default {
         {
           name: 'Lydia',
           msg: 'See you soon!',
-          flower: 2,
+          flower: 3,
           voiceUrl:
             'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T03%3A49%3A47.045Z.wav?alt=media&token=829ea840-00f8-4a82-b115-b299dc7c5946',
         },
@@ -90,7 +103,7 @@ export default {
           name: 'Jason',
           msg:
             'Hope your insurance is paid up! We want to see you back in the office soon!',
-          flower: 1,
+          flower: 4,
           voiceUrl:
             'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A51%3A44.682Z.wav?alt=media&token=0283afa6-c01e-4d21-9835-6aad335e8a59',
         },
@@ -106,9 +119,9 @@ export default {
     popMsgs() {
       console.log('popMsgs', this.msgs)
 
-      let MAX_FLOWERS = 10
+      let MAX_FLOWERS = 30
       let MAX_ROTATION = 360
-      let MIN_DISTANCE = 0.88
+      let MIN_DISTANCE = 0.8
       let DEGREES_TO_RADIANS = Math.PI / 180
       let msgs = []
       let msgIndex,
@@ -199,7 +212,7 @@ export default {
             name: msgSrc[msgIndex].name,
             msg: msgSrc[msgIndex].msg,
             flower: msgSrc[msgIndex].flower,
-            voiceUrl: msgSrc[msgIndex].voiceUrl,
+            voiceurl: msgSrc[msgIndex].voiceurl,
 
             // add the rotation values
             rotationX: rotationX,
@@ -215,7 +228,16 @@ export default {
     },
   },
   mounted() {
-    window.wmPlanet = this
+    window.wmPlanet = this;
+/*
+
+    this.soundtrack = new Howl({
+        src: ['audio/Sakuro 190120-085434.aif'],
+        volume: 1,
+        autoplay: true,
+        loop:true
+    });
+*/
   },
   methods: {
     randomStage(idx) {
@@ -240,7 +262,7 @@ export default {
       ) {
         this.voice = new Howl({
           src: [voiceUrl],
-          autoplay: true,
+            autoplay: true,
         })
 
         this.lastPlayedSound = voiceUrl

@@ -3,7 +3,7 @@ function mouseenterHandler(){
 
 
     window.wmPlanet.setMsg(this.getAttribute('msg'))
-    window.wmPlanet.playVoice(this.getAttribute('voiceUrl'))
+    window.wmPlanet.playVoice(this.getAttribute('voiceurl'))
 }
 
 function mouseleaveHandler(){

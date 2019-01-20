@@ -3,12 +3,12 @@
     <a-entity name='y-axis' :rotation="`0 0 ${offsetY}`">
       <a-entity name='planet-surface' :position="`0 ${hoverDistance} 0`">
         <b-flower :stage="stage" :modelids="modelids" :mtlids="mtlids"
-                  :ps="ps"
+                  :ps="ps" ref="flower"
                   :play="play"></b-flower>
         <a-box depth="2" width="2" height="4"
                position="0 2 0" visible="false"
-               material="shader: flat; color: red; opacity:0" class="clickable" bounce-on-hover
-               :msg="msg" :voice-url="voiceUrl">
+               material="shader: flat; color: red; opacity:0.2" class="clickable" bounce-on-hover
+               :msg="msg" :voiceurl="voiceurl">
                <!--<b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"-->
                <!--:play="play"></b-flower>-->
         </a-box>
@@ -51,7 +51,7 @@ export default {
       type: String,
       default: '',
     },
-    voiceUrl: {
+    voiceurl: {
       type: String,
       default: '',
     },
@@ -63,7 +63,7 @@ export default {
       offsetX: 0,
       offsetY: 0,
       flowerdata: {
-        flower1: {
+        flower0: {
           color: 0xff0000,
           obj: [
             '#Flower_3_sprout-dae',
@@ -73,11 +73,11 @@ export default {
           mtl: ['#', '#', '#'],
           ps: [
             'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
-            'color: #000000,#FF0000; blending: 1; particleCount: 100',
-            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+            'color: #000000,#FF0000; blending: 1; particleCount: 10',
+            'color: #000000,#FF0000; blending: 1; particleCount: 10',
           ],
         },
-        flower2: {
+        flower1: {
           color: 0xff0000,
           obj: [
             '#Flower_4_sprout-dae',
@@ -87,11 +87,11 @@ export default {
           mtl: ['#', '#', '#'],
           ps: [
             'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
-            'color: #000000,#FF0000; blending: 1; particleCount: 100',
-            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+            'color: #000000,#FF0000; blending: 1; particleCount: 10',
+            'color: #000000,#FF0000; blending: 1; particleCount: 10',
           ],
         },
-        flower3: {
+        flower2: {
           color: 0xfffffff,
           obj: [
             '#BubingaTreeSprout-gltf',
@@ -101,11 +101,11 @@ export default {
           mtl: ['#', '#', '#'],
           ps: [
             'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
-            'color: #000000,#FF0000; blending: 1; particleCount: 100',
-            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+            'color: #000000,#FF0000; blending: 1; particleCount: 10',
+            'color: #000000,#FF0000; blending: 1; particleCount: 10',
           ],
         },
-        flower4: {
+        flower3: {
           color: 0xff0000,
           obj: [
             '#AppleTree_Sprout-gltf',
@@ -115,8 +115,22 @@ export default {
           mtl: ['#', '#', '#'],
           ps: [
             'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
-            'color: #000000,#FF0000; blending: 1; particleCount: 100',
-            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+            'color: #000000,#FF0000; blending: 1; particleCount: 10',
+            'color: #000000,#FF0000; blending: 1; particleCount: 10',
+          ],
+        },
+        flower4: {
+          color: 0xff0000,
+          obj: [
+              '#Flower_5_sprout-dae',
+              '#Flower_5_sapling-dae',
+              '#Flower_5_bloom-dae',
+          ],
+          mtl: ['#', '#', '#'],
+          ps: [
+              'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
+              'color: #000000,#FF0000; blending: 1; particleCount: 10',
+              'color: #000000,#FF0000; blending: 1; particleCount: 10',
           ],
         },
       },
@@ -124,13 +138,13 @@ export default {
   },
   computed: {
     modelids() {
-      return this.flowerdata['flower' + 3].obj
+      return this.flowerdata['flower' + this.type].obj
     },
     mtlids() {
-      return this.flowerdata['flower' + 3].mtl
+      return this.flowerdata['flower' + this.type].mtl
     },
     ps() {
-      return this.flowerdata['flower' + 3].ps
+      return this.flowerdata['flower' + this.type].ps
     },
   },
   mounted() {
@@ -139,65 +153,17 @@ export default {
     // Once we have the final object, work on the sizing
     // this.hoverDistance = this.planetRadius + (this.$refs.flowerHolder.getAttribute('height')) * 0.5;
     // this.hoverDistance = this.planetRadius + .65;
-    this.hoverDistance = this.planetRadius
+    this.hoverDistance = this.planetRadius - 0.2;
 
     // set the rotation of the objects
     this.offsetX = this.rotX
     this.offsetY = this.rotY
 
-    // set the flower type
-    // console.log('flower', this.$refs.flowerHolder.object3D,'stage:', this.type, this.stage);
-    this.flowerUrl = this.flowerPaths[this.type][this.stage]
-    switch (this.type) {
-      case 0:
-        switch (this.stage) {
-          case 0:
-            this.flowerWidth = 0.5
-            this.flowerHeight = 2
-            break
-          case 1:
-            this.flowerWidth = 2
-            this.flowerHeight = 4
-            break
-          case 2:
-            this.flowerWidth = 3
-            this.flowerHeight = 6
-            break
-        }
-        break
-      case 1:
-        switch (this.stage) {
-          case 0:
-            this.flowerWidth = 1
-            this.flowerHeight = 2
-            break
-          case 1:
-            this.flowerWidth = 1
-            this.flowerHeight = 4
-            break
-          case 2:
-            this.flowerWidth = 6
-            this.flowerHeight = 6
-            break
-        }
-        break
-      case 2:
-        switch (this.stage) {
-          case 0:
-            this.flowerWidth = 1
-            this.flowerHeight = 2
-            break
-          case 1:
-            this.flowerWidth = 4
-            this.flowerHeight = 4
-            break
-          case 2:
-            this.flowerWidth = 3
-            this.flowerHeight = 6
-            break
-        }
-        break
-    }
+      // scale the flowers down a bit
+      if(this.$refs.flower && this.$refs.flower.object3D){
+        this.$refs.flower.object3D.scale.set(0.7, 0.7, 0.7);
+      }
+
   },
 }
 </script>
