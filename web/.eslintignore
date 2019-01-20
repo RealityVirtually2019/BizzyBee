@@ -1,1 +1,4 @@
 src/utils/*.js
+
+src/views/Mo.vue
+src/views/Jason.vue

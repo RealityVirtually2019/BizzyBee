@@ -32,7 +32,9 @@ export default {
     },
     ps: {
       type: Array,
-        default: function() {return ["#"]}
+      default: function() {
+        return ['#']
+      },
     },
     play: {
       type: String,
