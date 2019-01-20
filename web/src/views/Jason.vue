@@ -1,6 +1,6 @@
 <template>
   <!-- Planet that grows everything -->
-  <Planet position="0 0 -13"></Planet>
+  <Planet></Planet>
 </template>
 
 <script>

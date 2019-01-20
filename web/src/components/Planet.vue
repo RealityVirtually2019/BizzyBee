@@ -11,11 +11,11 @@
 
     <a-sky color="#ECECEC"></a-sky>
 
-    <a-camera>
+    <a-camera id="camera">
       <a-cursor raycaster="objects: .clickable"></a-cursor>
     </a-camera>
 
-    <a-sphere position="0 -7 -7" :radius="planetRadius" src="img/planet 1.png">
+    <a-sphere planet-gaze-rotator position="0 -7 -7" :radius="planetRadius" src="img/planet 1.png">
       <b-flowerHolder
               v-for="(msg, idx) in popMsgs" :key="idx"
               :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
