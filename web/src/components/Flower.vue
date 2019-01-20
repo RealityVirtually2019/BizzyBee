@@ -5,7 +5,7 @@
       <!-- <a-obj-model class="flowermodel" src="#bromeliads-obj" mtl="#bromeliads-mtl"></a-obj-model> -->
       <!-- <a-collada-model v-if="modelids[stage].includes('dae')" ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-collada-model> -->
       <a-gltf-model v-if="modelids[stage].includes('gltf')" ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-gltf-model>
-      <a-entity ref="parsys" :visible="playing"></a-entity>
+      <a-entity ref="parsys" :visible="playing" material="shader: flat;"></a-entity>
     </a-entity>
   </a-entity>
 </template>

@@ -74,8 +74,8 @@ export default {
           flowerdata: {
               moflower: {
                   color: 0xff0000,
-                  obj: ['#bromeliads-obj', '#papatest-gltf', '#monkey-gltf'],
-                  mtl: ['#bromeliads-mtl', '#', '#'],
+                  obj: ['#papatest-gltf', '#monkey-gltf'],
+                  mtl: [ '#', '#'],
                   ps: [
                       'preset: dust; color: #EF0000,#44CC00; blending: 1; particleCount: 10',
                       'preset: dust; color: #000000,#FF0000; blending: 1; particleCount: 10',

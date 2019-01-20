@@ -13,6 +13,7 @@ import EnterAR from './views/EnterAR.vue'
 
 import Jason from './views/Jason.vue'
 import Mo from './views/Mo.vue'
+import ARPlanet from './views/ARPlanet.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,11 @@ export default new Router({
       path: '/jason',
       name: 'jason',
       component: Jason,
+    },
+    {
+      path: '/arplanet',
+      name: 'arplanet',
+      component: ARPlanet,
     },
     {
       path: '/about',

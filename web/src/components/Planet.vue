@@ -1,19 +1,11 @@
 <template>
-  <a-scene>
-    <a-assets>
-      <a-asset-item id="bromeliads-obj" src="./flowers/Bromeliads/Bromeliads.obj"></a-asset-item>
-      <a-asset-item id="bromeliads-mtl" src="./flowers/Bromeliads/Bromeliads.mtl"></a-asset-item>
+  <a-entity>
 
-      <a-asset-item id="papatest-gltf" src="./flowers/papatest/papatest.gltf"></a-asset-item>
-      <a-asset-item id="tree-gltf" src="./models/example_flower.glb"></a-asset-item>
-      <a-asset-item id="monkey-gltf" src="./flowers/Monkey/monkey.gltf"></a-asset-item>
-    </a-assets>
+    <!-- <a-sky color="#ECECEC"></a-sky> -->
 
-    <a-sky color="#ECECEC"></a-sky>
-
-    <a-camera id="camera">
+    <!-- <a-camera id="camera">
       <a-cursor raycaster="objects: .clickable"></a-cursor>
-    </a-camera>
+    </a-camera> -->
 
     <a-sphere planet-gaze-rotator position="0 -7 -7" :radius="planetRadius" src="img/planet 1.png">
       <b-flowerHolder
@@ -23,7 +15,7 @@
               :stage="randomStage(idx)"></b-flowerHolder>
     </a-sphere>
 
-  </a-scene>
+  </a-entity>
 </template>
 
 <script>
