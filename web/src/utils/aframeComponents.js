@@ -1,31 +1,32 @@
+function mouseenterHandler(){
+    TweenMax.to(this.object3D.parent, 0.5, {three:{scale:1.3}, ease:Bounce.easeOut});
+
+
+    window.wmPlanet.setMsg(this.getAttribute('msg'))
+    window.wmPlanet.playVoice(this.getAttribute('voiceUrl'))
+}
+
+function mouseleaveHandler(){
+    TweenMax.to(this.object3D.parent, 0.4, {three:{scale:1}, ease:Bounce.easeOut});
+
+    window.wmPlanet.setMsg('')
+}
+
+
 AFRAME.registerComponent('bounce-on-hover', {
     schema: {
         // event: {type: 'string', default: ''},
         // message: {type: 'string', default: 'Hello, World!'}
     },
 
-    init: function () {
+    update: function () {
+
+        this.el.removeEventListener('mouseenter', mouseenterHandler);
+        this.el.removeEventListener('mouseleave', mouseleaveHandler);
+
         var data = this.data;
-        this.el.addEventListener('mouseenter', function(){
-            TweenMax.to(this.object3D.parent, 0.5, {three:{scale:1.3}, ease:Bounce.easeOut});
-
-            // debugger;
-            // console.log(this.object3D.);
-            // debugger;
-            // TweenMax.to(this.object3D.parent.getObjectByName('text').material, 0.5, {opacity:1});
-            // this.object3D.parent.getObjectByName('text').visible = true;
-            window.wmPlanet.setMsg(this.getAttribute('msg'))
-
-        });
-        this.el.addEventListener('mouseleave', function(){
-            TweenMax.to(this.object3D.parent, 0.4, {three:{scale:1}, ease:Bounce.easeOut});
-
-            // TweenMax.to(this.object3D.parent.getObjectByName('text').material, 0.5, {opacity:0});
-            // this.object3D.parent.getObjectByName('text').visible = false;
-            window.wmPlanet.setMsg('')
-
-
-        });
+        this.el.addEventListener('mouseenter', mouseenterHandler);
+        this.el.addEventListener('mouseleave', mouseleaveHandler);
 
     },
 });

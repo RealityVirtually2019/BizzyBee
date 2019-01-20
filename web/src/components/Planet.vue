@@ -34,6 +34,7 @@
 
 <script>
     import FlowerHolder from '@/components/FlowerHolder'
+    import {Howl, Howler} from 'howler';
 
     // @ is an alias to /src
     export default {
@@ -58,29 +59,39 @@
                         name: 'Kai',
                         msg: 'Get well soon!',
                         flower: 0,
+                                                voiceUrl: 'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A52%3A52.951Z.wav?alt=media&token=de8e5bca-935f-4a37-9629-bad4816487a5'
+
                     },
                     {
                         name: 'Mo',
                         msg: 'Hope you feel better!',
                         flower: 1,
+                                                voiceUrl: 'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A51%3A44.682Z.wav?alt=media&token=0283afa6-c01e-4d21-9835-6aad335e8a59'
+
                     },
                     {
                         name: 'Victoria',
                         msg: 'Get well soon!',
                         flower: 2,
+                                                voiceUrl: 'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T23%3A14%3A52.754Z.wav?alt=media&token=4853f94a-1b7a-4df1-bc55-06a799fb19c3'
+
                     },
                     {
                         name: 'Lydia',
                         msg: 'See you soon!',
                         flower: 2,
+                                                voiceUrl: 'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T03%3A49%3A47.045Z.wav?alt=media&token=829ea840-00f8-4a82-b115-b299dc7c5946'
+
                     },
                     {
                         name: 'Jason',
                         msg: 'Hope your insurance is paid up! We want to see you back in the office soon!',
                         flower: 1,
+                        voiceUrl: 'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A51%3A44.682Z.wav?alt=media&token=0283afa6-c01e-4d21-9835-6aad335e8a59'
                     },
                 ],
                 msg: '',
+                lastPlayedSound:'',
             }
         },
         computed: {
@@ -213,7 +224,20 @@
                 this.msg = msg
             },
             playVoice(voiceUrl){
+                if(!voiceUrl) return
 
+                if(this.voice && this.voice.playing ){
+                    this.voice.stop();
+                }
+
+                if(this.lastPlayedSound != voiceUrl || (this.voice && !this.voice.playing)){
+                    this.voice = new Howl({
+                        src: [voiceUrl],
+                        autoplay: true,
+                    });
+
+                    this.lastPlayedSound = voiceUrl;
+                }
             },
         },
     }

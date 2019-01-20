@@ -6,7 +6,7 @@
                           :play="play"></b-flower>
                 <a-box depth="2" width="2" height="4" position="0 2 0" visible="false"
                        material="shader: flat; color: red; opacity:0" class="clickable" bounce-on-hover
-                    :msg="msg">
+                    :msg="msg" :voiceUrl="voiceUrl">
                     <!--<b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"-->
                     <!--:play="play"></b-flower>-->
                 </a-box>
