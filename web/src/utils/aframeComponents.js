@@ -59,11 +59,11 @@ AFRAME.registerComponent('planet-gaze-rotator', {
 
         // left/right rotation
         if(Math.abs(rightAmount) > 0.25){
-            this.spinValue = Math.min(this.MAX_SPIN, this.spinValue + rightAmount * -0.001);
+            this.spinValue = Math.min(this.MAX_SPIN, this.spinValue + rightAmount * -0.0008);
         }
 
         this.el.object3D.rotation.y += this.spinValue;
-        this.spinValue *= 0.9;
+        this.spinValue *= 0.92;
 
 
     },
