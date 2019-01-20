@@ -1,45 +1,54 @@
 <template>
-    <a-entity>
-        <!-- Using the asset management system. -->
-        <a-entity ref="localspace" scale="1 1 1">
-            <!-- <a-obj-model class="flowermodel" src="#bromeliads-obj" mtl="#bromeliads-mtl"></a-obj-model> -->
-            <a-gltf-model ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-gltf-model>
-            <a-entity ref="parsys"></a-entity>
-        </a-entity>
-    </a-entity>
+  <a-entity>
+    <!-- Using the asset management system. -->
+      <a-entity ref="localspace" scale="1 1 1">
+        <!-- <a-obj-model class="flowermodel" src="#bromeliads-obj" mtl="#bromeliads-mtl"></a-obj-model> -->
+        <a-gltf-model ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-gltf-model>
+        <a-entity ref="parsys" :visible="playing"></a-entity>
+      </a-entity>
+  </a-entity>
 </template>
 
 <script>
-    // @ is an alias to /src
-    export default {
-        name: 'Flower',
-        props: {
-            stage: {
-                type: Number,
-                default: 0,
-            },
-            modelids: {
-                type: Array,
-                default: function() {return ["#papatest-gltf"]}
-            },
-            mtlids: {
-                type: Array,
-                default: function() {return ["#"]}
-            },
-            ps: {
-                type: Array,
-                default: [""]
-            }
-        },
-        mounted() {
-            this.showStage(this.stage)
-        },
-        methods: {
-            showStage(stageNum) {
-                this.modelLoadSetup()
-            },
-            modelLoadSetup() {
-                console.log(this.$el.getElementsByClassName("gltfmodel")[0]) // I'm text inside the component.
+// @ is an alias to /src
+export default {
+  name: 'Flower',
+  props: {
+    stage: {
+      type: Number,
+      default: 0,
+    },
+    modelids: {
+      type: Array,
+      default: function() {return ["#papatest-gltf"]}
+    },
+    mtlids: {
+      type: Array,
+      default: function() {return ["#"]}
+    },
+    ps: {
+      type: Array,
+      default: [""]
+    },
+    play: {
+      type: String,
+      default: "true"
+    }
+  },
+data(){
+      return {
+        playing: this.play
+      }
+},
+mounted() {
+    this.showStage(this.stage)
+  },
+  methods: {
+    showStage(stageNum) {
+      this.modelLoadSetup()
+    },
+    modelLoadSetup() {
+      console.log(this.$el.getElementsByClassName("gltfmodel")[0]) // I'm text inside the component.
 
                 let base = document.querySelector('a-assets')
                 let cmodel = this.$refs.modelgltf //this.$el.getElementsByClassName("gltfmodel")[0]
