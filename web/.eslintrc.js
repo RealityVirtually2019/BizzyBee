@@ -9,6 +9,8 @@ module.exports = {
     'no-console': 'off',
     'no-debugger': 'off',
 
+    'no-unused-vars': 'off',
+
     'comma-dangle': ['warn', 'only-multiline'],
 
     'prettier/prettier': [
@@ -42,5 +44,8 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 6,
+  },
+  globals: {
+    THREE: true,
   },
 }

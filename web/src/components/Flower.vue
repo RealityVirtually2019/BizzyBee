@@ -33,7 +33,9 @@ export default {
     },
     ps: {
       type: Array,
-        default: function() {return ["#"]}
+      default: function() {
+        return ['#']
+      },
     },
     play: {
       type: String,
@@ -53,8 +55,8 @@ export default {
       this.modelLoadSetup()
     },
     modelLoadSetup() {
-      if(this.$el.getElementsByClassName == undefined) {
-        console.log("Aborting getElementByClassName in Flower.vue")
+      if (this.$el.getElementsByClassName == undefined) {
+        console.log('Aborting getElementByClassName in Flower.vue')
         return
       }
       console.log(this.$el.getElementsByClassName('gltfmodel')[0]) // I'm text inside the component.

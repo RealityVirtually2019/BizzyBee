@@ -27,17 +27,17 @@ import Planet from '@/components/Planet'
 export default {
   name: 'App3D',
   components: {
-      'Planet': Planet,
+    Planet: Planet,
   },
 
-    props: {
-      msgs: {
-          type: Array,
-          default: function () {
-              return []
-          }
-      }
+  props: {
+    msgs: {
+      type: Array,
+      default: function() {
+        return []
+      },
     },
+  },
   data() {
     return {
       planetRadius: 7,
@@ -72,12 +72,11 @@ export default {
   },
   computed: {
     popMsgs() {
+      if (!this.msgs || !this.msgs.length) {
+        return this.msgsD
+      }
 
-        if(!this.msgs || !this.msgs.length){
-            return this.msgsD;
-        }
-
-        console.log('popMsgs', this.msgs)
+      console.log('popMsgs', this.msgs)
 
       let MAX_FLOWERS = 50
       let MAX_ROTATION = 360

@@ -53,9 +53,9 @@ export default {
     gardenKey() {
       return this.$route.params.gardenKey
     },
-      msgs(){
-        return this.garden.msgs ?  Object.values(this.garden.msgs) : []
-      }
+    msgs() {
+      return this.garden.msgs ? Object.values(this.garden.msgs) : []
+    },
   },
   watch: {
     $route() {
