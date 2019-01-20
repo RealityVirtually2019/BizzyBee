@@ -72,9 +72,9 @@ export default {
           ],
           mtl: ['#', '#', '#'],
           ps: [
-            'color: #F05174,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 5 0;',
-            'color: #F05174,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 5 0;',
-            'color: #F05174,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 5 0;',
+            'color: #F05174,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #F05174,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #F05174,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
           ],
         },
         flower1: {
@@ -86,9 +86,9 @@ export default {
           ],
           mtl: ['#', '#', '#'],
           ps: [
-            'color: #942E6B,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 1 0;',
-            'color: #942E6B,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 1 0;',
-            'color: #942E6B,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 1 0;',
+            'color: #942E6B,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #942E6B,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #942E6B,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
           ],
         },
         flower2: {
@@ -100,9 +100,9 @@ export default {
           ],
           mtl: ['#', '#', '#'],
           ps: [
-            'color: #EF0000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 3 0;',
-            'color: #000000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 3 0;',
-            'color: #000000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 3 0;',
+            'color: #EF0000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #000000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #000000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
           ],
         },
         flower3: {
@@ -114,9 +114,9 @@ export default {
           ],
           mtl: ['#', '#', '#'],
           ps: [
-            'color: #EF0000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 2 0;',
-            'color: #000000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 2 0;',
-            'color: #000000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 2 0;',
+            'color: #EF0000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #000000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #000000,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
           ],
         },
         flower4: {
@@ -128,9 +128,9 @@ export default {
           ],
           mtl: ['#', '#', '#'],
           ps: [
-              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 2 0;',
-              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 2 0;',
-              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 2 0;',
+              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
           ],
         },
       },
