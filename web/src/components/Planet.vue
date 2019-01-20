@@ -1,37 +1,107 @@
 <template>
   <a-scene>
     <a-assets>
-      <a-asset-item id="BubingaTreeBloom-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeBloom.gltf"></a-asset-item>
-      <a-asset-item id="BubingaTreeSapling-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSapling.gltf"></a-asset-item>
-      <a-asset-item id="BubingaTreeSprout-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSprout.gltf"></a-asset-item>
+      <a-asset-item
+        id="Flower_3_bloom-dae"
+        src="./flowers/Flower1/Flower_3_bloom.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_3_sapling-dae"
+        src="./flowers/Flower1/Flower_3_sapling.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_3_sprout-dae"
+        src="./flowers/Flower1/Flower_3_sprout.dae"
+      ></a-asset-item>
 
-      <a-asset-item id="AppleTree_Bloom-gltf" src="./flowers/AppleTree_gltf/AppleTree_Bloom.gltf"></a-asset-item>
-      <a-asset-item id="AppleTree_Sapling-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sapling.gltf"></a-asset-item>
-      <a-asset-item id="AppleTree_Sprout-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sprout.gltf"></a-asset-item>
+      <a-asset-item
+        id="Flower_4_bloom-dae"
+        src="./flowers/Flower2/Flower_4_bloom.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_4_sapling-dae"
+        src="./flowers/Flower2/Flower_4_sapling.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_4_sprout-dae"
+        src="./flowers/Flower2/Flower_4_sprout.dae"
+      ></a-asset-item>
+
+      <a-asset-item
+        id="Flower_5_bloom-dae"
+        src="./flowers/Flower3/flower_5_bloom.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_5_sapling-dae"
+        src="./flowers/Flower3/flower_5_sapling.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_5_sprout-dae"
+        src="./flowers/Flower3/flower_5_sprout.dae"
+      ></a-asset-item>
+
+      <a-asset-item
+        id="BubingaTreeBloom-gltf"
+        src="./flowers/BubungaTree_gltf/BubingaTreeBloom.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="BubingaTreeSapling-gltf"
+        src="./flowers/BubungaTree_gltf/BubingaTreeSapling.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="BubingaTreeSprout-gltf"
+        src="./flowers/BubungaTree_gltf/BubingaTreeSprout.gltf"
+      ></a-asset-item>
+
+      <a-asset-item
+        id="AppleTree_Bloom-gltf"
+        src="./flowers/AppleTree_gltf/AppleTree_Bloom.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="AppleTree_Sapling-gltf"
+        src="./flowers/AppleTree_gltf/AppleTree_Sapling.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="AppleTree_Sprout-gltf"
+        src="./flowers/AppleTree_gltf/AppleTree_Sprout.gltf"
+      ></a-asset-item>
     </a-assets>
 
-    <a-sky color="#ECECEC"></a-sky>
+    <a-sky color="#F9ECA0"></a-sky>
 
     <a-camera id="camera">
-
       <a-cursor raycaster="objects: .clickable">
-        <a-entity :visible="msg ? 'true' : 'false'" named-text
-                  :text="msgText" position="0 -0.2 -1"
-                  material="transparent:true; color: #5b9f96; side: double; opacity:0.25"
-                  geometry="primitive: plane; width: 2; height: 0.8;"></a-entity>
+        <a-entity
+          :visible="msg ? 'true' : 'false'"
+          named-text
+          :text="msgText"
+          position="0 -0.2 -1"
+          material="transparent:true; color: #5b9f96; side: double; opacity:0.25"
+          geometry="primitive: plane; width: 2; height: 0.8;"
+        ></a-entity>
       </a-cursor>
     </a-camera>
 
-    <a-sphere planet-gaze-rotator position="0 -2 -13" :radius="planetRadius" src="img/planet 1.png">
+    <a-sphere
+      planet-gaze-rotator
+      position="0 -2 -13"
+      :radius="planetRadius"
+      src="img/planet 1.png"
+    >
       <!--<a-light type="ambient" color="#ffffff" intensity="" ></a-light>-->
       <b-flowerHolder
-        v-for="(msg, idx) in popMsgs" :key="idx"
-        :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
-        :rot-y="msg.rotationY" :voice-url="msg.voiceUrl" :msg="`${msg.msg} \n by [${msg.name}]`"
-        :stage="randomStage(idx)"></b-flowerHolder>
+        v-for="(msg, idx) in popMsgs"
+        :key="idx"
+        :planet-radius="planetRadius"
+        :type="msg.flower"
+        :rot-x="msg.rotationX"
+        :rot-y="msg.rotationY"
+        :voiceurl="msg.voiceurl"
+        :msg="`${msg.msg} \n by [${msg.name}]`"
+        :stage="randomStage(idx)"
+      ></b-flowerHolder>
       <a-sphere :radius="5" class="clickable"></a-sphere>
     </a-sphere>
-
   </a-scene>
 </template>
 
@@ -56,44 +126,52 @@ export default {
   },
   data() {
     return {
+      soundtrack: null,
       planetRadius: 7,
       msgsD: [
-        {
-          name: 'Kai',
-          msg: 'Get well soon!',
-          flower: 0,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A52%3A52.951Z.wav?alt=media&token=de8e5bca-935f-4a37-9629-bad4816487a5',
-        },
-        {
-          name: 'Mo',
-          msg: 'Hope you feel better!',
-          flower: 1,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A51%3A44.682Z.wav?alt=media&token=0283afa6-c01e-4d21-9835-6aad335e8a59',
-        },
-        {
-          name: 'Victoria',
-          msg: 'Get well soon!',
-          flower: 2,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T23%3A14%3A52.754Z.wav?alt=media&token=4853f94a-1b7a-4df1-bc55-06a799fb19c3',
-        },
-        {
-          name: 'Lydia',
-          msg: 'See you soon!',
-          flower: 2,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T03%3A49%3A47.045Z.wav?alt=media&token=829ea840-00f8-4a82-b115-b299dc7c5946',
-        },
-        {
-          name: 'Jason',
-          msg:
-            'Hope your insurance is paid up! We want to see you back in the office soon!',
-          flower: 1,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A51%3A44.682Z.wav?alt=media&token=0283afa6-c01e-4d21-9835-6aad335e8a59',
-        },
+          {
+              "flower" : 1,
+              "msg" : "Take your sweet time getting well!",
+              "name" : "Kai",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A19%3A06.719Z.wav?alt=media&token=2740145e-c859-43f7-b490-1ffdf36e897f"
+          },
+          {
+              "flower" : 2,
+              "msg" : "Hope it won’t be long till you’re out of the hospital.",
+              "name" : "MOMO",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A20%3A37.377Z.wav?alt=media&token=3da97e0d-b1b1-4ac0-b727-a267f71cf4e8"
+          },
+          {
+              "flower" : 0,
+              "msg" : "Miss you around here!",
+              "name" : "Jason",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A21%3A11.864Z.wav?alt=media&token=12dc47eb-c35f-4e6e-a993-15c58d2ae82d"
+          },
+          {
+              "flower" : 3,
+              "msg" : "We hope you’re taking it slow and easy right now.",
+              "name" : "Morris",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A21%3A38.825Z.wav?alt=media&token=e1807a25-e12e-49bf-9be6-4f9320d81ef5"
+          },
+          {
+              "flower" : 4,
+              "msg" : "Hope you’re catching up on your cookbook reading!",
+              "name" : "Lydia",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A23%3A06.044Z.wav?alt=media&token=c5b3f16c-dd04-411c-a4bf-8b6a80816748"
+          },
+          {
+              "flower" : 2,
+              "msg" : "Sending good, healthy vibes your way.",
+              "name" : "Janet",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A23%3A49.625Z.wav?alt=media&token=ffb3df3d-bb57-4bb7-bfd8-b367e364ba8e"
+          },
+          {
+              "flower" : 1,
+              "msg" : "Hope you get to feeling better soon!",
+              "name" : "VVVVV",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A24%3A27.774Z.wav?alt=media&token=e82027e6-bcf7-4bdd-82bd-8300c559cd4f"
+          }
+
       ],
       msg: '',
       lastPlayedSound: '',
@@ -106,9 +184,9 @@ export default {
     popMsgs() {
       console.log('popMsgs', this.msgs)
 
-      let MAX_FLOWERS = 10
+      let MAX_FLOWERS = 20
       let MAX_ROTATION = 360
-      let MIN_DISTANCE = 0.88
+      let MIN_DISTANCE = 0.8
       let DEGREES_TO_RADIANS = Math.PI / 180
       let msgs = []
       let msgIndex,
@@ -199,7 +277,7 @@ export default {
             name: msgSrc[msgIndex].name,
             msg: msgSrc[msgIndex].msg,
             flower: msgSrc[msgIndex].flower,
-            voiceUrl: msgSrc[msgIndex].voiceUrl,
+            voiceurl: msgSrc[msgIndex].voiceUrl,
 
             // add the rotation values
             rotationX: rotationX,
@@ -216,6 +294,13 @@ export default {
   },
   mounted() {
     window.wmPlanet = this
+
+    this.soundtrack = new Howl({
+        src: ['audio/Sakuro 190120-085434.aif', 'audio/Sakuro 190120-085434.mp3'],
+        volume: 0.3,
+        autoplay: true,
+        loop:true
+    });
   },
   methods: {
     randomStage(idx) {
