@@ -1,12 +1,22 @@
 <template>
   <div class="gardener">
-    <h4>This for {{ garden.name }}</h4>
-    <p>{{ garden.desc }}</p>
-    <timeago :datetime="garden.sendItAt" />
-    <p>See How it works</p>
-    <el-button @click="shareGardener">Share</el-button>
-    <Planet class="planet" embedded position="0 0 -13" :msgs="msgs"></Planet>
-    <el-button @click="addFlower">Add You Flower</el-button>
+    <a-scene embedded> <Planet position="0 0 -13"></Planet> </a-scene>
+    <div class="header">
+      <h1 class="title" @click="goHome">BizzyBee</h1>
+      <p class="desc">{{ garden.desc }}</p>
+      <div class="for">
+        <p class="forWho">
+          This is for <b>{{ garden.name }}</b>
+        </p>
+        <p class="forWhen">
+          <span>Deliver </span><b><timeago :datetime="garden.sendItAt"/></b>
+        </p>
+      </div>
+      <el-button class="btnShare" @click="shareGardener">Share</el-button>
+    </div>
+    <div class="btns">
+      <el-button @click="addFlower">Let's Plant Flower</el-button>
+    </div>
   </div>
 </template>
 
@@ -56,21 +66,31 @@ export default {
     // this.$bindAsObject('user', db.ref('links'), null, () => console.log('Ready fired!'))
   },
   methods: {
+    goHome() {
+      this.$router.push('/')
+    },
     addFlower() {
       this.$router.push(`/gardening/${this.gardenKey}`)
     },
     shareGardener() {
+      const share = {
+        title: `VR/AR Garden For [${this.garden.name}]`,
+        text: this.garden.desc,
+        url: window.location.href,
+      }
+
+      console.log(share)
       if (navigator.share) {
         navigator
-          .share({
-            title: `gARden For [${this.garden.recipient}]`,
-            text: this.desc,
-            url: window.location.href,
-          })
+          .share(share)
           .then(() => console.log('Successful share'))
-          .catch(error => console.log('Error sharing', error))
+          .catch(error => {
+            console.log('Error sharing', error)
+            alert('Copy URL and share it 🎅🏻')
+          })
       } else {
-        alert('Share function is not ready for IOS.')
+        // alert('Share function is not ready.')
+        alert('Copy URL and share it 🎅🏻')
       }
     },
   },
@@ -78,9 +98,78 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.planet {
+.gardener {
+  color: white;
+  text-shadow: 1px 1px 4px #00000080;
+}
+
+.title {
+  text-align: center;
+  font-size: 48px;
+  margin: 5px 0px;
+}
+
+.header {
+  $p: 15px;
+  width: calc(100% - #{$p} * 2);
+  position: fixed;
+  top: 0px;
+  padding: 0px $p;
+  // background-color: #69a5d396;
+  background-color: #00000096;
+
+  overflow: hidden;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+
+  .desc {
+    text-align: justify;
+    margin: 10px 0px;
+    font-weight: lighter;
+  }
+
+  .for {
+    font-size: 12px;
+    margin-top: 16px;
+    padding-bottom: 8px;
+
+    > p {
+      margin: 5px 0px;
+
+      b {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .btnShare {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    background-color: transparent;
+    color: white;
+    border-width: 0px;
+  }
+}
+
+.btns {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  bottom: 10px;
+
+  button {
+    background-color: #00000080;
+    color: white;
+  }
+}
+
+a-scene {
+  position: fixed;
   display: block;
-  height: 50vh;
+  bottom: 0px;
+  height: 100vh;
   width: 100%;
 }
 </style>
