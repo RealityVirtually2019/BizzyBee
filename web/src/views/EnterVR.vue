@@ -1,10 +1,12 @@
 <template>
   <div class="enterVR">
-    <h4>This for {{ garden.name }}</h4>
-    <p>{{ garden.desc }}</p>
     <a-scene> <Planet></Planet> </a-scene>
+    <div class="header">
+      <h1 class="title">BizzyBee</h1>
+      <p>Hi {{ garden.name }}</p>
+      <p>{{ garden.desc }}</p>
+    </div>
     <p></p>
-    <el-button @click="putSeed">Enter VR</el-button>
   </div>
 </template>
 
@@ -15,7 +17,7 @@ import Planet from '@/components/Planet'
 import { db } from '@/services/firebase'
 
 export default {
-  name: 'Garden',
+  name: 'EnterVR',
   firebase() {
     return {
       dbLink: {
@@ -64,3 +66,18 @@ export default {
   created() {},
 }
 </script>
+
+<style scoped>
+.header {
+  margin: 0px 20px;
+  text-shadow: 1px 1px 4px #00000015;
+}
+
+a-scene {
+  position: fixed;
+  display: block;
+  bottom: 0px;
+  height: 100vh;
+  width: 100%;
+}
+</style>
