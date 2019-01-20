@@ -7,7 +7,7 @@
           This is for <b>{{ garden.name }}</b>
         </p>
         <p class="forWhen">
-          <span>Deliver </span><b><timeago :datetime="garden.sendItAt"/></b>
+          <span>Deliver</span> <b> <timeago :datetime="garden.sendItAt" /> </b>
         </p>
       </div>
     </div>
@@ -25,12 +25,11 @@
     >
       <vue-glide-slide v-for="img in imgs" :key="img">
         <div class="imgContainer">
-          <img class="img" :src="`img/flowers/${img}`" alt="" />
+          <img class="img" :src="`img/flowers/${img}`" alt />
         </div>
       </vue-glide-slide>
     </vue-glide>
     <!-- <p>{{ imgIdx }}</p> -->
-
     <div class="form">
       <el-form
         class="form"
@@ -47,14 +46,13 @@
             type="textarea"
             :rows="2"
             placeholder="for someone for some reason"
-          >
-          </el-input>
+          ></el-input>
         </el-form-item>
         <el-form-item label="5 Secs Voice (Optional)">
-          <el-button v-if="recorder" @click="recordVoice">
-            Record Voice
-          </el-button>
-          <span v-if="countDown"> <span> </span> {{ countDown }} secs</span>
+          <el-button v-if="recorder" @click="recordVoice"
+            >Record Voice</el-button
+          >
+          <span v-if="countDown"> <span></span> {{ countDown }} secs </span>
         </el-form-item>
       </el-form>
 
@@ -67,9 +65,9 @@
       ></progress>
     </div>
     <div class="btns">
-      <el-button :disabled="!ready || !name" @click="putSeed">
-        Put the seed
-      </el-button>
+      <el-button :disabled="!ready || !name" @click="putSeed"
+        >Put the seed</el-button
+      >
     </div>
   </div>
 </template>
@@ -81,6 +79,7 @@ import { db, storage } from '@/services/firebase'
 import { Glide, GlideSlide } from 'vue-glide-js'
 
 // import '@/utils/recorder.js'
+import Recorder from 'recorder-js'
 
 export default {
   name: 'Gardening',
