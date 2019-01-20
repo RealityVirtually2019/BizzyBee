@@ -2,8 +2,8 @@
 
   <a-scene>
     
-    <!--
-    <a-sphere radius="1" color="#EF2D5E"></a-sphere>
+
+    <!-- <a-sphere radius="1" color="#EF2D5E"></a-sphere> -->
     <a-sky color="#ECECEC"></a-sky>
     
     <a-assets>
@@ -12,20 +12,20 @@
       <a-asset-item id="Flower_3_sapling-dae" src="./flowers/Flower1/Flower_3_sapling.dae"></a-asset-item>
       <a-asset-item id="Flower_3_sprout-dae" src="./flowers/Flower1/Flower_3_sprout.dae"></a-asset-item>
 
-      <a-asset-item id="Flower_4_bloom-dae" src="./flowers/Flower1/Flower_4_bloom.dae"></a-asset-item>
-      <a-asset-item id="Flower_4_sapling-dae" src="./flowers/Flower1/Flower_4_sapling.dae"></a-asset-item>
-      <a-asset-item id="Flower_4_sprout-dae" src="./flowers/Flower1/Flower_4_sprout.dae"></a-asset-item>
+      <a-asset-item id="Flower_4_bloom-dae" src="./flowers/Flower2/Flower_4_bloom.dae"></a-asset-item>
+      <a-asset-item id="Flower_4_sapling-dae" src="./flowers/Flower2/Flower_4_sapling.dae"></a-asset-item>
+      <a-asset-item id="Flower_4_sprout-dae" src="./flowers/Flower2/Flower_4_sprout.dae"></a-asset-item>
       
     </a-assets>
-    <Flower :stage="stage" :modelids="flowerdata.flower1.obj" :mtlids="flowerdata.flower1.mtl" :ps="flowerdata.flower1.ps" :play="play"/>
-    -->
+    <Flower :stage="stage" :modelids="flowerdata.flower2.obj" :mtlids="flowerdata.flower2.mtl" :ps="flowerdata.flower2.ps" :play="play"/>
+
   </a-scene>
   
 </template>
 
 <script>
 // @ is an alias to /src
-//import Flower from '@/components/Flower'
+import Flower from '@/components/Flower'
 
 let flowerdata = {
   flower1: {
@@ -33,7 +33,7 @@ let flowerdata = {
     obj: [
       '#Flower_3_sprout-dae',
       '#Flower_3_sapling-dae',
-      'Flower_3_bloom-dae',
+      '#Flower_3_bloom-dae',
     ],
     mtl: ['#', '#', '#'],
     ps: [
@@ -47,7 +47,7 @@ let flowerdata = {
     obj: [
       '#Flower_4_sprout-dae',
       '#Flower_4_sapling-dae',
-      'Flower_4_bloom-dae',
+      '#Flower_4_bloom-dae',
     ],
     mtl: ['#', '#', '#'],
     ps: [
@@ -61,7 +61,7 @@ let flowerdata = {
 export default {
   name: 'Mo',
   components: {
-    //Flower: Flower,
+    Flower: Flower,
   },
   data() {
     return {
