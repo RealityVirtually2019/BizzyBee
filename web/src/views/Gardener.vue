@@ -2,7 +2,7 @@
   <div class="gardener">
     <a-scene embedded> <Planet position="0 0 -13"></Planet> </a-scene>
     <div class="header">
-      <h1 class="title">BizzyBee</h1>
+      <h1 class="title" @click="goHome">BizzyBee</h1>
       <p class="desc">{{ garden.desc }}</p>
       <div class="for">
         <p class="forWho">
@@ -12,8 +12,8 @@
           <span>Deliver </span><b><timeago :datetime="garden.sendItAt"/></b>
         </p>
       </div>
+      <el-button class="btnShare" @click="shareGardener">Share</el-button>
     </div>
-    <!-- <el-button @click="shareGardener">Share</el-button> -->
     <div class="btns">
       <el-button @click="addFlower">Let's Plant Flower</el-button>
     </div>
@@ -63,21 +63,31 @@ export default {
     // this.$bindAsObject('user', db.ref('links'), null, () => console.log('Ready fired!'))
   },
   methods: {
+    goHome() {
+      this.$router.push('/')
+    },
     addFlower() {
       this.$router.push(`/gardening/${this.gardenKey}`)
     },
     shareGardener() {
+      const share = {
+        title: `VR/AR Garden For [${this.garden.name}]`,
+        text: this.garden.desc,
+        url: window.location.href,
+      }
+
+      console.log(share)
       if (navigator.share) {
         navigator
-          .share({
-            title: `gARden For [${this.garden.recipient}]`,
-            text: this.desc,
-            url: window.location.href,
-          })
+          .share(share)
           .then(() => console.log('Successful share'))
-          .catch(error => console.log('Error sharing', error))
+          .catch(error => {
+            console.log('Error sharing', error)
+            alert('Copy URL and share it 🎅🏻')
+          })
       } else {
-        alert('Share function is not ready for IOS.')
+        // alert('Share function is not ready.')
+        alert('Copy URL and share it 🎅🏻')
       }
     },
   },
@@ -127,6 +137,16 @@ export default {
         font-size: 14px;
       }
     }
+  }
+
+  .btnShare {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    background-color: transparent;
+    color: white;
+    border-width: 0px;
   }
 }
 
