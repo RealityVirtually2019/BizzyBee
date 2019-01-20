@@ -57,7 +57,7 @@ export default {
         console.log('Aborting getElementByClassName in Flower.vue')
         return
       }
-      console.log(this.$el.getElementsByClassName('gltfmodel')[0]) // I'm text inside the component.
+      // console.log(this.$el.getElementsByClassName('gltfmodel')[0]) // I'm text inside the component.
 
       let base = document.querySelector('a-assets')
       let cmodel = this.$refs.modelgltf //this.$el.getElementsByClassName("gltfmodel")[0]
@@ -68,7 +68,7 @@ export default {
       })
     },
     setup() {
-      console.log('model setup')
+      // console.log('model setup')
       while (this.$refs.parsys.firstChild) {
         this.$refs.parsys.removeChild(this.$refs.parsys.firstChild)
       }
@@ -90,7 +90,7 @@ export default {
         )
         for (var bloomBone in bloomBones) {
           if (bloomBone) {
-            console.log('Bloom Bone - ', bloomBone)
+            // console.log('Bloom Bone - ', bloomBone)
 
             var psys_holder = this.$refs.parsys
             var psys = document.createElement('a-entity')
@@ -120,7 +120,7 @@ export default {
 
             this.$refs.parsys.appendChild(psys)
           } else {
-            console.log('No Bloom Bone found')
+            // console.log('No Bloom Bone found')
           }
         }
       }

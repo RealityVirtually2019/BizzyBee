@@ -67,7 +67,7 @@
       ></a-asset-item>
     </a-assets>
 
-    <a-sky color="#ECECEC"></a-sky>
+    <a-sky color="#F9ECA0"></a-sky>
 
     <a-camera id="camera">
       <a-cursor raycaster="objects: .clickable">
@@ -129,42 +129,49 @@ export default {
       soundtrack: null,
       planetRadius: 7,
       msgsD: [
-        {
-          name: 'Kai',
-          msg: 'Get well soon!',
-          flower: 0,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A52%3A52.951Z.wav?alt=media&token=de8e5bca-935f-4a37-9629-bad4816487a5',
-        },
-        {
-          name: 'Mo',
-          msg: 'Hope you feel better!',
-          flower: 1,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A51%3A44.682Z.wav?alt=media&token=0283afa6-c01e-4d21-9835-6aad335e8a59',
-        },
-        {
-          name: 'Victoria',
-          msg: 'Get well soon!',
-          flower: 2,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T23%3A14%3A52.754Z.wav?alt=media&token=4853f94a-1b7a-4df1-bc55-06a799fb19c3',
-        },
-        {
-          name: 'Lydia',
-          msg: 'See you soon!',
-          flower: 3,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T03%3A49%3A47.045Z.wav?alt=media&token=829ea840-00f8-4a82-b115-b299dc7c5946',
-        },
-        {
-          name: 'Jason',
-          msg:
-            'Hope your insurance is paid up! We want to see you back in the office soon!',
-          flower: 4,
-          voiceUrl:
-            'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A51%3A44.682Z.wav?alt=media&token=0283afa6-c01e-4d21-9835-6aad335e8a59',
-        },
+          {
+              "flower" : 1,
+              "msg" : "Take your sweet time getting well!",
+              "name" : "Kai",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A19%3A06.719Z.wav?alt=media&token=2740145e-c859-43f7-b490-1ffdf36e897f"
+          },
+          {
+              "flower" : 2,
+              "msg" : "Hope it won’t be long till you’re out of the hospital.",
+              "name" : "MOMO",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A20%3A37.377Z.wav?alt=media&token=3da97e0d-b1b1-4ac0-b727-a267f71cf4e8"
+          },
+          {
+              "flower" : 0,
+              "msg" : "Miss you around here!",
+              "name" : "Jason",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A21%3A11.864Z.wav?alt=media&token=12dc47eb-c35f-4e6e-a993-15c58d2ae82d"
+          },
+          {
+              "flower" : 3,
+              "msg" : "We hope you’re taking it slow and easy right now.",
+              "name" : "Morris",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A21%3A38.825Z.wav?alt=media&token=e1807a25-e12e-49bf-9be6-4f9320d81ef5"
+          },
+          {
+              "flower" : 4,
+              "msg" : "Hope you’re catching up on your cookbook reading!",
+              "name" : "Lydia",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A23%3A06.044Z.wav?alt=media&token=c5b3f16c-dd04-411c-a4bf-8b6a80816748"
+          },
+          {
+              "flower" : 2,
+              "msg" : "Sending good, healthy vibes your way.",
+              "name" : "Janet",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A23%3A49.625Z.wav?alt=media&token=ffb3df3d-bb57-4bb7-bfd8-b367e364ba8e"
+          },
+          {
+              "flower" : 1,
+              "msg" : "Hope you get to feeling better soon!",
+              "name" : "VVVVV",
+              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A24%3A27.774Z.wav?alt=media&token=e82027e6-bcf7-4bdd-82bd-8300c559cd4f"
+          }
+
       ],
       msg: '',
       lastPlayedSound: '',
@@ -177,7 +184,7 @@ export default {
     popMsgs() {
       console.log('popMsgs', this.msgs)
 
-      let MAX_FLOWERS = 30
+      let MAX_FLOWERS = 20
       let MAX_ROTATION = 360
       let MIN_DISTANCE = 0.8
       let DEGREES_TO_RADIANS = Math.PI / 180
@@ -287,15 +294,13 @@ export default {
   },
   mounted() {
     window.wmPlanet = this
-    /*
 
     this.soundtrack = new Howl({
-        src: ['audio/Sakuro 190120-085434.aif'],
-        volume: 1,
+        src: ['audio/Sakuro 190120-085434.aif', 'audio/Sakuro 190120-085434.mp3'],
+        volume: 0.3,
         autoplay: true,
         loop:true
     });
-*/
   },
   methods: {
     randomStage(idx) {
