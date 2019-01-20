@@ -5,6 +5,7 @@ import store from './store'
 import './registerServiceWorker'
 
 // import 'aframe'
+import '@/utils/aframeComponents'
 
 Vue.config.productionTip = false
 

@@ -2,7 +2,7 @@
   <a-entity name='x-axis' :rotation="`${offsetX} 0 0`">
     <a-entity name='y-axis' :rotation="`0 0 ${offsetY}`">
       <a-entity name='planet-surface' :position="`0 ${hoverDistance} 0`">
-        <b-flower></b-flower>
+        <b-flower bounce-on-hover></b-flower>
         <!--<a-gltf-model name='flower-holder' ref="flowerHolder" src="models/example_flower.glb"></a-gltf-model>-->
         <!--
                                 <a-plane name='flower-holder' ref="flowerHolder" :material="`side: double; color: #FFFFFF; transparent: true; opacity: 1;`"

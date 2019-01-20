@@ -1,5 +1,5 @@
 <template>
-  <a-sphere position="0 -7 -7" :radius="planetRadius" color="#EF2D5E">
+  <a-sphere position="0 -7 -7" clicked="alert('Howdy!')" :radius="planetRadius" color="#EF2D5E">
     <b-flowerHolder
       v-for="(msg, idx) in popMsgs" :key="idx"
       :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
@@ -110,8 +110,6 @@ export default {
             // update the min angular distance encountered
             minDistance = Math.max(minDistance, msgVector.dot(testVector))
           }
-
-          // minDistance
 
           // if we've found a distance too small, break and retry
           if (minDistance >= MIN_DISTANCE) {
