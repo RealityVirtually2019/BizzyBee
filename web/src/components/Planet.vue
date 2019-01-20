@@ -1,12 +1,13 @@
 <template>
     <a-scene>
         <a-assets>
-            <a-asset-item id="bromeliads-obj" src="./flowers/Bromeliads/Bromeliads.obj"></a-asset-item>
-            <a-asset-item id="bromeliads-mtl" src="./flowers/Bromeliads/Bromeliads.mtl"></a-asset-item>
+            <a-asset-item id="BubingaTreeBloom-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeBloom.gltf"></a-asset-item>
+            <a-asset-item id="BubingaTreeSapling-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSapling.gltf"></a-asset-item>
+            <a-asset-item id="BubingaTreeSprout-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSprout.gltf"></a-asset-item>
 
-            <a-asset-item id="papatest-gltf" src="./flowers/papatest/papatest.gltf"></a-asset-item>
-            <a-asset-item id="tree-gltf" src="./models/example_flower.glb"></a-asset-item>
-            <a-asset-item id="monkey-gltf" src="./flowers/Monkey/monkey.gltf"></a-asset-item>
+            <a-asset-item id="AppleTree_Bloom-gltf" src="./flowers/AppleTree_gltf/AppleTree_Bloom.gltf"></a-asset-item>
+            <a-asset-item id="AppleTree_Sapling-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sapling.gltf"></a-asset-item>
+            <a-asset-item id="AppleTree_Sprout-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sprout.gltf"></a-asset-item>
         </a-assets>
 
         <a-sky color="#ECECEC"></a-sky>
@@ -21,12 +22,14 @@
             </a-cursor>
         </a-camera>
 
-        <a-sphere planet-gaze-rotator position="0 0 -13" :radius="planetRadius" src="img/planet 1.png">
+        <a-sphere planet-gaze-rotator position="0 -2 -13" :radius="planetRadius" src="img/planet 1.png">
+            <!--<a-light type="ambient" color="#ffffff" intensity="" ></a-light>-->
             <b-flowerHolder
                     v-for="(msg, idx) in popMsgs" :key="idx"
                     :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
                     :rot-y="msg.rotationY" :voiceUrl="msg.voiceUrl" :msg="`${msg.msg} \n by [${msg.name}]`"
                     :stage="randomStage(idx)"></b-flowerHolder>
+            <a-sphere :radius="5" class="clickable"></a-sphere>
         </a-sphere>
 
     </a-scene>
@@ -59,7 +62,7 @@
                         name: 'Kai',
                         msg: 'Get well soon!',
                         flower: 0,
-                                                voiceUrl: 'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A52%3A52.951Z.wav?alt=media&token=de8e5bca-935f-4a37-9629-bad4816487a5'
+                        voiceUrl: 'https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-19T22%3A52%3A52.951Z.wav?alt=media&token=de8e5bca-935f-4a37-9629-bad4816487a5'
 
                     },
                     {

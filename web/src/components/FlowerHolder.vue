@@ -16,13 +16,13 @@
 </template>
 
 <script>
-    import DummyFlower from '@/components/DummyFlower'
+    import Flower from '@/components/Flower'
 
     // @ is an alias to /src
     export default {
         name: 'FlowerHolder',
         components: {
-            'b-flower': DummyFlower,
+            'b-flower': Flower,
         },
         props: {
             planetRadius: {
@@ -60,50 +60,75 @@
                 hoverDistance: 0,
                 offsetX: 0,
                 offsetY: 0,
-                flowerUrl: '',
-                flowerPaths: {
-                    0: [
-                        'img/flowers/Blue Flower-1.png',
-                        'img/flowers/Blue-Flower-2.png',
-                        'img/flowers/Blue-Flower-3.png',
-                    ],
-                    1: [
-                        'img/flowers/bulb-flower-1.png',
-                        'img/flowers/bulb-flower-2.png',
-                        'img/flowers/bulb-flower-3-blue.png',
-                    ],
-                    2: [
-                        'img/flowers/flower_1_sprout.png',
-                        'img/flowers/flower_1_sapling.png',
-                        'img/flowers/flower_1_bloom.png',
-                    ],
-                },
-                flowerHeight: 0,
-                flowerWidth: 0,
                 flowerdata: {
-                    moflower: {
+                    flower1: {
                         color: 0xff0000,
-
-                        obj: ["#tree-gltf", "#papatest-gltf", "#tree-gltf"],
-                        mtl: ["#bromeliads-mtl", "#", "#"],
-                        ps: ["color: #EF0000,#44CC00; blending: 1; particleCount: 3; maxAge: 1; size:0.3;", "color: #EF0000,#44CC00; blending: 1; particleCount: 3; maxAge: 1; size:0.3;", "color: #000000,#FF0000; blending: 1; particleCount: 3; maxAge: 1; size:0.3;"]
+                        obj: [
+                            '#Flower_3_sprout-dae',
+                            '#Flower_3_sapling-dae',
+                            '#Flower_3_bloom-dae',
+                        ],
+                        mtl: ['#', '#', '#'],
+                        ps: [
+                            'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
+                            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+                            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+                        ],
                     },
-                    monkeyflower: {
-                        color: 0x00ff00,
-                        obj: ['#monkey'],
+                    flower2: {
+                        color: 0xff0000,
+                        obj: [
+                            '#Flower_4_sprout-dae',
+                            '#Flower_4_sapling-dae',
+                            '#Flower_4_bloom-dae',
+                        ],
+                        mtl: ['#', '#', '#'],
+                        ps: [
+                            'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
+                            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+                            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+                        ],
+                    },
+                    flower3: {
+                        color: 0xffFFFFF,
+                        obj: [
+                            '#BubingaTreeSprout-gltf',
+                            '#BubingaTreeSapling-gltf',
+                            '#BubingaTreeBloom-gltf',
+                        ],
+                        mtl: ['#', '#', '#'],
+                        ps: [
+                            'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
+                            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+                            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+                        ],
+                    },
+                    flower4: {
+                        color: 0xff0000,
+                        obj: [
+                            '#AppleTree_Sprout-gltf',
+                            '#AppleTree_Sapling-gltf',
+                            '#AppleTree_Bloom-gltf',
+                        ],
+                        mtl: ['#', '#', '#'],
+                        ps: [
+                            'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
+                            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+                            'color: #000000,#FF0000; blending: 1; particleCount: 100',
+                        ],
                     },
                 }
             }
         },
         computed: {
             modelids() {
-                return this.flowerdata.moflower.obj
+                return this.flowerdata['flower' + 3].obj
             },
             mtlids() {
-                return this.flowerdata.moflower.mtl
+                return this.flowerdata['flower' + 3].mtl
             },
             ps() {
-                return this.flowerdata.moflower.ps
+                return this.flowerdata['flower' + 3].ps
             }
         },
         mounted() {
