@@ -1,11 +1,11 @@
 <template>
-  <div class="enterVR">
-    <h4>This for {{ garden.name }}</h4>
-    <p>{{ garden.desc }}</p>
-    <a-scene> <Planet></Planet> </a-scene>
-    <p></p>
-    <el-button @click="putSeed">Enter AR</el-button>
-  </div>
+  <a-scene embedded arjs='sourceType: webcam;'>
+    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+    <a-entity position="0 1.5 0" scale="0.18 0.18 0.18">
+      <Planet></Planet>
+    </a-entity>
+    <a-marker-camera preset='hiro'></a-marker-camera>
+  </a-scene>
 </template>
 
 <script>
@@ -15,7 +15,7 @@ import Planet from '@/components/Planet'
 import { db } from '@/services/firebase'
 
 export default {
-  name: 'Garden',
+  name: 'EnterAR',
   firebase() {
     return {
       dbLink: {
@@ -64,3 +64,18 @@ export default {
   created() {},
 }
 </script>
+
+<style scoped>
+.header {
+  margin: 0px 20px;
+  text-shadow: 1px 1px 4px #00000015;
+}
+
+/* a-scene {
+  position: fixed;
+  display: block;
+  bottom: 0px;
+  height: 100vh;
+  width: 100%;
+} */
+</style>
