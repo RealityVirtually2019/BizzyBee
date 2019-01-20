@@ -25,6 +25,10 @@ export default {
     mtlids: {
       type: Array,
       default: function() {return ["#"]}
+    },
+    ps: {
+      type: Array,
+      default: [""]
     }
   },
   mounted() {
@@ -60,11 +64,22 @@ export default {
 
               var psys_holder = this.$refs.parsys;
               var psys = document.createElement("a-entity");
-              psys.setAttribute("particle-system", "preset: default")
+
               psys.object3D.position.set(bloomBones[bloomBone].position.x, bloomBones[bloomBone].position.y, bloomBones[bloomBone].position.z)
               if(bloomBones[bloomBone].rotation != undefined) {
                 psys.object3D.rotation.set(bloomBones[bloomBone].rotation.x, bloomBones[bloomBone].rotation.y, bloomBones[bloomBone].rotation.z)
               }
+
+              var att = document.createAttribute("particle-system");       // Create a "class" attribute
+              if(this.ps[this.stage] == "" || this.ps[this.stage] == undefined) {
+                att.value = "preset:default";
+                psys.setAttributeNode(att)
+              } else {
+                att.value = this.ps[this.stage];                         // Set the value of the class attribute
+                psys.setAttributeNode(att);
+              }
+              
+              
               this.$refs.parsys.appendChild(psys)
             } else {
               console.log("No Bloom Bone found")

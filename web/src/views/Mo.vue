@@ -12,7 +12,7 @@
       <a-asset-item id="papatest-gltf" src="./flowers/papatest/papatest.gltf"></a-asset-item>
       <a-asset-item id="monkey-gltf" src="./flowers/Monkey/monkey.gltf"></a-asset-item>
     </a-assets>
-    <Flower :stage="stage" :modelids="flowerdata.moflower.obj" :mtlids="flowerdata.moflower.mtl" />
+    <Flower :stage="stage" :modelids="flowerdata.moflower.obj" :mtlids="flowerdata.moflower.mtl" :ps="flowerdata.moflower.ps" />
   </a-scene>
   
 </template>
@@ -26,7 +26,8 @@ let flowerdata =
   moflower:{
     color: 0xff0000,
     obj:["#papatest-gltf", "#monkey-gltf"],
-    mtl:["#bromeliads-mtl", "#"]
+    mtl:["#bromeliads-mtl", "#"],
+    ps:["color: #EF0000,#44CC00; blending: 0", "color: #000000,#FF0000"]
     },
   monkeyflower:{
     color:0x00FF00,
