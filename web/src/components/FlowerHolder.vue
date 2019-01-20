@@ -2,11 +2,11 @@
     <a-entity name='x-axis' :rotation="`${offsetX} 0 0`">
         <a-entity name='y-axis' :rotation="`0 0 ${offsetY}`">
             <a-entity name='planet-surface' :position="`0 ${hoverDistance} 0`">
-                <a-entity :text="'value: ${msg}'" position="2 2 0"></a-entity>
                 <b-flower :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="ps"
                           :play="play"></b-flower>
                 <a-box depth="2" width="2" height="4" position="0 2 0" visible="false"
-                       material="shader: flat; color: red; opacity:0" class="clickable" bounce-on-hover>
+                       material="shader: flat; color: red; opacity:0" class="clickable" bounce-on-hover
+                    :msg="msg">
                     <!--<b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"-->
                     <!--:play="play"></b-flower>-->
                 </a-box>

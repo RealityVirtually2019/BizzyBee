@@ -2,7 +2,7 @@
   <a-entity>
     <!-- Using the asset management system. -->
     <a-entity ref="localspace" scale="1 1 1">
-       <a-gltf-model ref="modelgltf" class="flowermodel" src="#papatest-gltf"></a-gltf-model>
+      <a-gltf-model ref="modelgltf" class="flowermodel" src="#papatest-gltf"></a-gltf-model>
       <!--<a-collada-model ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-collada-model>-->
       <a-entity ref="parsys" :visible="playing"></a-entity>
     </a-entity>

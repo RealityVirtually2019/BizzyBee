@@ -1,6 +1,6 @@
 <template>
   <div class="gardener">
-    <a-scene embedded> <Planet position="0 0 -13"></Planet> </a-scene>
+    <Planet embedded position="0 0 -13"></Planet>
     <div class="header">
       <h1 class="title" @click="goHome">BizzyBee</h1>
       <p class="desc">{{ garden.desc }}</p>
