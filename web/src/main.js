@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
-import 'aframe'
+// import 'aframe'
+import '@/utils/aframeComponents'
 
 import './plugins/element.js'
 
