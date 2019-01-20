@@ -1,6 +1,6 @@
 <template>
   <div class="build">
-    <h1 class="title">BizzyBee</h1>
+    <h1 class="title" @click="quickDemo">BizzyBee</h1>
     <el-form label-width="120px" class="form" size="mini">
       <h2>Host</h2>
       <el-form-item label="Your Name">
@@ -104,6 +104,14 @@ export default {
     },
   },
   methods: {
+    quickDemo() {
+      this.hostName = 'Brica Hrica'
+      this.hostEmail = 'BHrica@AZCErica.com.tw'
+      this.name = 'Arica Zrica'
+      this.desc = `Aunt Lori Fainted And Broke Her Wrist. She Will Have To Be In The Hospital For 6 Days While Dr.s Run Tests. Join us!`
+      this.sendItAt = '2019-01-29T00:00:00.000Z'
+      this.address = 'MSG Hospital Room 75351'
+    },
     build() {
       const gardenRef = db.ref('gardens').push()
       const gardenKey = gardenRef.key
