@@ -6,7 +6,6 @@ AFRAME.registerComponent('bounce-on-hover', {
 
     init: function () {
         this.el.addEventListener('mouseenter', function(){
-            console.log('hi!', this)
            TweenMax.to(this.object3D.parent, 0.5, {three:{scale:1.3}, ease:Bounce.easeOut});
         });
         this.el.addEventListener('mouseleave', function(){

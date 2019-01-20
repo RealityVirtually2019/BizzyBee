@@ -59,7 +59,7 @@ mounted() {
                 });
             },
             setup() {
-                console.log('model setup');
+                // console.log('model setup');
                 while (this.$refs.parsys.firstChild) {
                     this.$refs.parsys.removeChild(this.$refs.parsys.firstChild);
                 }

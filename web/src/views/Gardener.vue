@@ -5,7 +5,7 @@
     <timeago :datetime="garden.sendItAt" />
     <p>See How it works</p>
     <el-button @click="shareGardener">Share</el-button>
-    <a-scene embedded> <Planet position="0 0 -13"></Planet> </a-scene>
+    <Planet class="planet" embedded position="0 0 -13" :msgs="msgs"></Planet>
     <el-button @click="addFlower">Add You Flower</el-button>
   </div>
 </template>
@@ -43,6 +43,9 @@ export default {
     gardenKey() {
       return this.$route.params.gardenKey
     },
+      msgs(){
+        return this.garden.msgs ?  Object.values(this.garden.msgs) : []
+      }
   },
   watch: {
     $route() {
@@ -75,7 +78,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a-scene {
+.planet {
   display: block;
   height: 50vh;
   width: 100%;

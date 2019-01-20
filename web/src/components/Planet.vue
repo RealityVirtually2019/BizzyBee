@@ -1,11 +1,29 @@
 <template>
-  <a-sphere position="0 -7 -7" clicked="alert('Howdy!')" :radius="planetRadius" color="#EF2D5E">
-    <b-flowerHolder
-      v-for="(msg, idx) in popMsgs" :key="idx"
-      :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
-      :rot-y="msg.rotationY"
-      :stage="randomStage(idx)"></b-flowerHolder>
-  </a-sphere>
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="bromeliads-obj" src="./flowers/Bromeliads/Bromeliads.obj"></a-asset-item>
+      <a-asset-item id="bromeliads-mtl" src="./flowers/Bromeliads/Bromeliads.mtl"></a-asset-item>
+
+      <a-asset-item id="papatest-gltf" src="./flowers/papatest/papatest.gltf"></a-asset-item>
+      <a-asset-item id="tree-gltf" src="./models/example_flower.glb"></a-asset-item>
+      <a-asset-item id="monkey-gltf" src="./flowers/Monkey/monkey.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-sky color="#ECECEC"></a-sky>
+
+    <a-camera>
+      <a-cursor raycaster="objects: .clickable"></a-cursor>
+    </a-camera>
+
+    <a-sphere position="0 -7 -7" :radius="planetRadius" src="img/planet 1.png">
+      <b-flowerHolder
+              v-for="(msg, idx) in popMsgs" :key="idx"
+              :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
+              :rot-y="msg.rotationY"
+              :stage="randomStage(idx)"></b-flowerHolder>
+    </a-sphere>
+
+  </a-scene>
 </template>
 
 <script>
@@ -17,10 +35,19 @@ export default {
   components: {
     'b-flowerHolder': FlowerHolder,
   },
+
+    props: {
+      msgs: {
+          type: Array,
+          default: function () {
+              return []
+          }
+      }
+    },
   data() {
     return {
       planetRadius: 7,
-      msgs: [
+      msgsD: [
         {
           name: 'Kai',
           msg: 'Get well soon!',
@@ -51,6 +78,9 @@ export default {
   },
   computed: {
     popMsgs() {
+
+        console.log('popMsgs', this.msgs)
+
       let MAX_FLOWERS = 50
       let MAX_ROTATION = 360
       let MIN_DISTANCE = 0.88
@@ -135,13 +165,15 @@ export default {
         }
         // otherwise add the flower to the msgs array
         else {
-          // get the index of the msg
-          msgIndex = i % this.msgs.length
+            var msgSrc = this.msgs && this.msgs.length ? this.msgs : this.msgsD;
+
+            // get the index of the msg
+          msgIndex = i % msgSrc.length
 
           msgs.push({
-            name: this.msgs[msgIndex].name,
-            msg: this.msgs[msgIndex].msg,
-            flower: this.msgs[msgIndex].flower,
+            name: msgSrc[msgIndex].name,
+            msg: msgSrc[msgIndex].msg,
+            flower: msgSrc[msgIndex].flower,
 
             // add the rotation values
             rotationX: rotationX,
