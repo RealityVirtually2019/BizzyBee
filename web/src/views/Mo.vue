@@ -15,9 +15,17 @@
       <a-asset-item id="Flower_4_bloom-dae" src="./flowers/Flower2/Flower_4_bloom.dae"></a-asset-item>
       <a-asset-item id="Flower_4_sapling-dae" src="./flowers/Flower2/Flower_4_sapling.dae"></a-asset-item>
       <a-asset-item id="Flower_4_sprout-dae" src="./flowers/Flower2/Flower_4_sprout.dae"></a-asset-item>
+
+      <a-asset-item id="BubingaTreeBloom-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeBloom.gltf"></a-asset-item>
+      <a-asset-item id="BubingaTreeSapling-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSapling.gltf"></a-asset-item>
+      <a-asset-item id="BubingaTreeSprout-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSprout.gltf"></a-asset-item>
+
+      <a-asset-item id="AppleTree_Bloom-gltf" src="./flowers/AppleTree_gltf/AppleTree_Bloom.gltf"></a-asset-item>
+      <a-asset-item id="AppleTree_Sapling-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sapling.gltf"></a-asset-item>
+      <a-asset-item id="AppleTree_Sprout-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sprout.gltf"></a-asset-item>
       
     </a-assets>
-    <Flower :stage="stage" :modelids="flowerdata.flower2.obj" :mtlids="flowerdata.flower2.mtl" :ps="flowerdata.flower2.ps" :play="play"/>
+    <Flower :stage="stage" :modelids="flowerdata.flower4.obj" :mtlids="flowerdata.flower4.mtl" :ps="flowerdata.flower4.ps" :play="play"/>
 
   </a-scene>
   
@@ -48,6 +56,34 @@ let flowerdata = {
       '#Flower_4_sprout-dae',
       '#Flower_4_sapling-dae',
       '#Flower_4_bloom-dae',
+    ],
+    mtl: ['#', '#', '#'],
+    ps: [
+      'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
+      'color: #000000,#FF0000; blending: 1; particleCount: 100',
+      'color: #000000,#FF0000; blending: 1; particleCount: 100',
+    ],
+  },
+  flower3: {
+    color: 0xff0000,
+    obj: [
+      '#BubingaTreeSprout-gltf',
+      '#BubingaTreeSapling-gltf',
+      '#BubingaTreeBloom-gltf',
+    ],
+    mtl: ['#', '#', '#'],
+    ps: [
+      'color: #EF0000,#44CC00; blending: 1; particleCount: 10',
+      'color: #000000,#FF0000; blending: 1; particleCount: 100',
+      'color: #000000,#FF0000; blending: 1; particleCount: 100',
+    ],
+  },
+  flower4: {
+    color: 0xff0000,
+    obj: [
+      '#AppleTree_Sprout-gltf',
+      '#AppleTree_Sapling-gltf',
+      '#AppleTree_Bloom-gltf',
     ],
     mtl: ['#', '#', '#'],
     ps: [

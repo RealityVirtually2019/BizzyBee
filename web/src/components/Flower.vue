@@ -3,7 +3,8 @@
     <!-- Using the asset management system. -->
     <a-entity ref="localspace" scale="1 1 1">
       <!-- <a-obj-model class="flowermodel" src="#bromeliads-obj" mtl="#bromeliads-mtl"></a-obj-model> -->
-      <a-collada-model ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-collada-model>
+      <!-- <a-collada-model v-if="modelids[stage].includes('dae')" ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-collada-model> -->
+      <a-gltf-model v-if="modelids[stage].includes('gltf')" ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-gltf-model>
       <a-entity ref="parsys" :visible="playing"></a-entity>
     </a-entity>
   </a-entity>
@@ -52,6 +53,10 @@ export default {
       this.modelLoadSetup()
     },
     modelLoadSetup() {
+      if(this.$el.getElementsByClassName == undefined) {
+        console.log("Aborting getElementByClassName in Flower.vue")
+        return
+      }
       console.log(this.$el.getElementsByClassName('gltfmodel')[0]) // I'm text inside the component.
 
       let base = document.querySelector('a-assets')
