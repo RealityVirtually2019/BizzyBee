@@ -3,6 +3,9 @@
     <h4>This for {{ garden.name }}</h4>
     <p>{{ garden.desc }}</p>
     <a-scene> <Planet></Planet> </a-scene>
+    <a-entity position="0 -7 -7">
+      <a-camera></a-camera>
+    </a-entity>
     <p></p>
     <el-button @click="putSeed">Enter VR</el-button>
   </div>

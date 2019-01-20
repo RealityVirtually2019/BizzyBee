@@ -28,7 +28,7 @@ export default {
     },
     ps: {
       type: Array,
-      default: [""]
+      default: function() {return [""]}
     },
     play: {
       type: String,
