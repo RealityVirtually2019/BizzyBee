@@ -59,8 +59,8 @@ export default new Router({
       component: EnterAR,
     },
     {
-      path: '/mo',
-      name: 'mo',
+      path: '/momo',
+      name: 'momo',
       component: Mo,
     },
     {
