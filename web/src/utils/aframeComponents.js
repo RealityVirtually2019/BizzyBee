@@ -1,17 +1,47 @@
+function mouseenterHandler(){
+    TweenMax.to(this.object3D.parent, 0.5, {three:{scale:1.3}, ease:Bounce.easeOut});
+
+
+    window.wmPlanet.setMsg(this.getAttribute('msg'))
+    window.wmPlanet.playVoice(this.getAttribute('voiceUrl'))
+}
+
+function mouseleaveHandler(){
+    TweenMax.to(this.object3D.parent, 0.4, {three:{scale:1}, ease:Bounce.easeOut});
+
+    window.wmPlanet.setMsg('')
+}
+
+
 AFRAME.registerComponent('bounce-on-hover', {
     schema: {
         // event: {type: 'string', default: ''},
         // message: {type: 'string', default: 'Hello, World!'}
     },
 
-    init: function () {
-        this.el.addEventListener('mouseenter', function(){
-           TweenMax.to(this.object3D.parent, 0.5, {three:{scale:1.3}, ease:Bounce.easeOut});
-        });
-        this.el.addEventListener('mouseleave', function(){
-           TweenMax.to(this.object3D.parent, 0.4, {three:{scale:1}, ease:Bounce.easeOut});
-        });
+    update: function () {
 
+        this.el.removeEventListener('mouseenter', mouseenterHandler);
+        this.el.removeEventListener('mouseleave', mouseleaveHandler);
+
+        var data = this.data;
+        this.el.addEventListener('mouseenter', mouseenterHandler);
+        this.el.addEventListener('mouseleave', mouseleaveHandler);
+
+    },
+});
+
+AFRAME.registerComponent('named-text', {
+    schema: {
+        // event: {type: 'string', default: ''},
+        // message: {type: 'string', default: 'Hello, World!'}
+    },
+
+    init: function () {
+        var data = this.data;
+        this.el.object3D.name = 'text'
+
+        // debugger;
     },
 });
 
