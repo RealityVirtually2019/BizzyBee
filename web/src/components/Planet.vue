@@ -1,49 +1,107 @@
 <template>
   <a-scene>
     <a-assets>
-        <a-asset-item id="Flower_3_bloom-dae" src="./flowers/Flower1/Flower_3_bloom.dae"></a-asset-item>
-        <a-asset-item id="Flower_3_sapling-dae" src="./flowers/Flower1/Flower_3_sapling.dae"></a-asset-item>
-        <a-asset-item id="Flower_3_sprout-dae" src="./flowers/Flower1/Flower_3_sprout.dae"></a-asset-item>
+      <a-asset-item
+        id="Flower_3_bloom-dae"
+        src="./flowers/Flower1/Flower_3_bloom.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_3_sapling-dae"
+        src="./flowers/Flower1/Flower_3_sapling.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_3_sprout-dae"
+        src="./flowers/Flower1/Flower_3_sprout.dae"
+      ></a-asset-item>
 
-        <a-asset-item id="Flower_4_bloom-dae" src="./flowers/Flower2/Flower_4_bloom.dae"></a-asset-item>
-        <a-asset-item id="Flower_4_sapling-dae" src="./flowers/Flower2/Flower_4_sapling.dae"></a-asset-item>
-        <a-asset-item id="Flower_4_sprout-dae" src="./flowers/Flower2/Flower_4_sprout.dae"></a-asset-item>
+      <a-asset-item
+        id="Flower_4_bloom-dae"
+        src="./flowers/Flower2/Flower_4_bloom.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_4_sapling-dae"
+        src="./flowers/Flower2/Flower_4_sapling.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_4_sprout-dae"
+        src="./flowers/Flower2/Flower_4_sprout.dae"
+      ></a-asset-item>
 
-        <a-asset-item id="Flower_5_bloom-dae" src="./flowers/Flower3/flower_5_bloom.dae"></a-asset-item>
-        <a-asset-item id="Flower_5_sapling-dae" src="./flowers/Flower3/flower_5_sapling.dae"></a-asset-item>
-        <a-asset-item id="Flower_5_sprout-dae" src="./flowers/Flower3/flower_5_sprout.dae"></a-asset-item>
+      <a-asset-item
+        id="Flower_5_bloom-dae"
+        src="./flowers/Flower3/flower_5_bloom.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_5_sapling-dae"
+        src="./flowers/Flower3/flower_5_sapling.dae"
+      ></a-asset-item>
+      <a-asset-item
+        id="Flower_5_sprout-dae"
+        src="./flowers/Flower3/flower_5_sprout.dae"
+      ></a-asset-item>
 
-        <a-asset-item id="BubingaTreeBloom-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeBloom.gltf"></a-asset-item>
-        <a-asset-item id="BubingaTreeSapling-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSapling.gltf"></a-asset-item>
-        <a-asset-item id="BubingaTreeSprout-gltf" src="./flowers/BubungaTree_gltf/BubingaTreeSprout.gltf"></a-asset-item>
+      <a-asset-item
+        id="BubingaTreeBloom-gltf"
+        src="./flowers/BubungaTree_gltf/BubingaTreeBloom.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="BubingaTreeSapling-gltf"
+        src="./flowers/BubungaTree_gltf/BubingaTreeSapling.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="BubingaTreeSprout-gltf"
+        src="./flowers/BubungaTree_gltf/BubingaTreeSprout.gltf"
+      ></a-asset-item>
 
-        <a-asset-item id="AppleTree_Bloom-gltf" src="./flowers/AppleTree_gltf/AppleTree_Bloom.gltf"></a-asset-item>
-        <a-asset-item id="AppleTree_Sapling-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sapling.gltf"></a-asset-item>
-        <a-asset-item id="AppleTree_Sprout-gltf" src="./flowers/AppleTree_gltf/AppleTree_Sprout.gltf"></a-asset-item>
+      <a-asset-item
+        id="AppleTree_Bloom-gltf"
+        src="./flowers/AppleTree_gltf/AppleTree_Bloom.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="AppleTree_Sapling-gltf"
+        src="./flowers/AppleTree_gltf/AppleTree_Sapling.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="AppleTree_Sprout-gltf"
+        src="./flowers/AppleTree_gltf/AppleTree_Sprout.gltf"
+      ></a-asset-item>
     </a-assets>
 
     <a-sky color="#ECECEC"></a-sky>
 
     <a-camera id="camera">
-
       <a-cursor raycaster="objects: .clickable">
-        <a-entity :visible="msg ? 'true' : 'false'" named-text
-                  :text="msgText" position="0 -0.2 -1"
-                  material="transparent:true; color: #5b9f96; side: double; opacity:0.25"
-                  geometry="primitive: plane; width: 2; height: 0.8;"></a-entity>
+        <a-entity
+          :visible="msg ? 'true' : 'false'"
+          named-text
+          :text="msgText"
+          position="0 -0.2 -1"
+          material="transparent:true; color: #5b9f96; side: double; opacity:0.25"
+          geometry="primitive: plane; width: 2; height: 0.8;"
+        ></a-entity>
       </a-cursor>
     </a-camera>
 
-    <a-sphere planet-gaze-rotator position="0 -2 -13" :radius="planetRadius" src="img/planet 1.png">
+    <a-sphere
+      planet-gaze-rotator
+      position="0 -2 -13"
+      :radius="planetRadius"
+      src="img/planet 1.png"
+    >
       <!--<a-light type="ambient" color="#ffffff" intensity="" ></a-light>-->
       <b-flowerHolder
-        v-for="(msg, idx) in popMsgs" :key="idx"
-        :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
-        :rot-y="msg.rotationY" :voiceurl="msg.voiceurl" :msg="`${msg.msg} \n by [${msg.name}]`"
-        :stage="randomStage(idx)"></b-flowerHolder>
+        v-for="(msg, idx) in popMsgs"
+        :key="idx"
+        :planet-radius="planetRadius"
+        :type="msg.flower"
+        :rot-x="msg.rotationX"
+        :rot-y="msg.rotationY"
+        :voiceurl="msg.voiceurl"
+        :msg="`${msg.msg} \n by [${msg.name}]`"
+        :stage="randomStage(idx)"
+      ></b-flowerHolder>
       <a-sphere :radius="5" class="clickable"></a-sphere>
     </a-sphere>
-
   </a-scene>
 </template>
 
@@ -68,7 +126,7 @@ export default {
   },
   data() {
     return {
-        soundtrack:null,
+      soundtrack: null,
       planetRadius: 7,
       msgsD: [
         {
@@ -212,7 +270,7 @@ export default {
             name: msgSrc[msgIndex].name,
             msg: msgSrc[msgIndex].msg,
             flower: msgSrc[msgIndex].flower,
-            voiceurl: msgSrc[msgIndex].voiceurl,
+            voiceurl: msgSrc[msgIndex].voiceUrl,
 
             // add the rotation values
             rotationX: rotationX,
@@ -228,8 +286,8 @@ export default {
     },
   },
   mounted() {
-    window.wmPlanet = this;
-/*
+    window.wmPlanet = this
+    /*
 
     this.soundtrack = new Howl({
         src: ['audio/Sakuro 190120-085434.aif'],
@@ -262,7 +320,7 @@ export default {
       ) {
         this.voice = new Howl({
           src: [voiceUrl],
-            autoplay: true,
+          autoplay: true,
         })
 
         this.lastPlayedSound = voiceUrl
