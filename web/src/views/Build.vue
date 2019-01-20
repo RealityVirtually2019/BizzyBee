@@ -1,46 +1,58 @@
 <template>
   <div class="build">
-    <el-form label-width="80px">
-      <el-form-item label="Name">
-        <el-input v-model="name" placeholder="Who"></el-input>
+    <h1 class="title">BizzyBee</h1>
+    <el-form label-width="120px" class="form" size="mini">
+      <h2>Host</h2>
+      <el-form-item label="Your Name">
+        <el-input v-model="hostName" placeholder="Who are you"></el-input>
       </el-form-item>
-      <el-form-item label="Description">
+      <el-form-item label="Your Email">
+        <el-input
+          v-model="hostEmail"
+          type="email"
+          placeholder="Your Email"
+        ></el-input>
+      </el-form-item>
+      <h2>Deliver to</h2>
+      <el-form-item label="Name">
+        <el-input
+          v-model="name"
+          placeholder="Who you wanna deliver to"
+        ></el-input>
+      </el-form-item>
+      <el-form-item label="Card Message">
         <el-input
           v-model="desc"
           type="textarea"
-          :rows="2"
-          placeholder="What's this for someone for some reason"
+          :rows="1"
+          placeholder="for someone or for some reason"
         >
         </el-input>
+      </el-form-item>
+      <el-form-item label="Deliver On">
+        <el-date-picker
+          v-model="sendItAt"
+          align="right"
+          type="date"
+          placeholder="What date do you want to send it to ....."
+        >
+        </el-date-picker>
       </el-form-item>
       <el-form-item label="Address">
         <el-input
           v-model="address"
           type="textarea"
           :rows="2"
-          placeholder="We will send a Card to...."
+          placeholder="We will send the Card to...."
         >
         </el-input>
       </el-form-item>
-      <el-form-item label="Send It">
-        <el-date-picker
-          v-model="sendItAt"
-          align="right"
-          type="date"
-          placeholder="What date do you want to send it to ....."
-          :picker-options="sendDatePickerOptions"
-        >
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="Your Email">
-        <el-input
-          v-model="email"
-          type="email"
-          placeholder="Input your Email"
-        ></el-input>
-      </el-form-item>
     </el-form>
-    <el-button @click="build">Build</el-button>
+    <div class="btns">
+      <el-button :disabled="ready" class="btnBuild" @click="build">
+        Build
+      </el-button>
+    </div>
   </div>
 </template>
 
@@ -76,13 +88,20 @@ export default {
   name: 'Build',
   data() {
     return {
-      name: '123',
-      desc: '123',
-      sendItAt: '123',
-      address: '123',
-      email: '123',
+      hostName: '',
+      hostEmail: '',
+      name: '',
+      desc: '',
+      sendItAt: '',
+      address: '',
+      email: '',
       sendDatePickerOptions,
     }
+  },
+  computed: {
+    ready() {
+      return !this.sendItAt || !this.hostName || !this.name
+    },
   },
   methods: {
     build() {
@@ -102,8 +121,38 @@ export default {
 
       gardenRef.update(data).then(() => {
         console.log('Garden has been built!')
+        this.$router.push(`/gardener/${gardenKey}`)
       })
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.build {
+  // text-align: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 64px;
+  margin: 5px 0px;
+}
+
+.form {
+  margin-right: 20px;
+
+  h2 {
+    margin-left: 10px;
+    border-bottom: 1px solid black;
+  }
+}
+
+.btns {
+  text-align: center;
+}
+
+.btnBuild {
+  margin-left: 10px;
+}
+</style>

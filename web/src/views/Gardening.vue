@@ -1,9 +1,18 @@
 <template>
-  <div class="gardener">
-    <h2>BizzyBee</h2>
-    <p>This 123 for {{ garden.name }}</p>
-    <!-- <timeago :datetime="garden.sendItAt" /> -->
+  <div class="gardening">
+    <div class="header">
+      <h1 class="title">BizzyBee</h1>
+      <div class="for">
+        <p class="forWho">
+          This is for <b>{{ garden.name }}</b>
+        </p>
+        <p class="forWhen">
+          <span>Deliver </span><b><timeago :datetime="garden.sendItAt"/></b>
+        </p>
+      </div>
+    </div>
 
+    <h3 class="chooseFlower">Choose Flower</h3>
     <vue-glide
       v-model="imgIdx"
       :options="{
@@ -20,19 +29,24 @@
         </div>
       </vue-glide-slide>
     </vue-glide>
-    <p>{{ imgIdx }}</p>
+    <!-- <p>{{ imgIdx }}</p> -->
 
-    <div id="form">
-      <el-form label-width="100px">
+    <div class="form">
+      <el-form
+        class="form"
+        label-width="120px"
+        label-position="top"
+        size="mini"
+      >
         <el-form-item label="Name">
-          <el-input v-model="name" placeholder="Who"></el-input>
+          <el-input v-model="name" placeholder="Your Name"></el-input>
         </el-form-item>
-        <el-form-item label="Your Message">
+        <el-form-item label="Your Message (Optional)">
           <el-input
             v-model="msg"
             type="textarea"
             :rows="2"
-            placeholder=" (Optional) What's this for someone for some reason"
+            placeholder="for someone for some reason"
           >
           </el-input>
         </el-form-item>
@@ -40,7 +54,7 @@
           <el-button v-if="recorder" @click="recordVoice">
             Record Voice
           </el-button>
-          <span v-if="countDown"> {{ countDown }} secs</span>
+          <span v-if="countDown"> <span> </span> {{ countDown }} secs</span>
         </el-form-item>
       </el-form>
 
@@ -51,7 +65,8 @@
         value="0"
         max="100"
       ></progress>
-
+    </div>
+    <div class="btns">
       <el-button :disabled="!ready || !name" @click="putSeed">
         Put the seed
       </el-button>
@@ -68,7 +83,7 @@ import { Glide, GlideSlide } from 'vue-glide-js'
 import '@/utils/recorder.js'
 
 export default {
-  name: 'Gardener',
+  name: 'Gardening',
   firebase() {
     return {
       dbGarden: {
@@ -240,6 +255,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.gardening {
+  overflow: auto;
+}
+
+.header {
+  $p: 15px;
+  width: calc(100% - #{$p} * 2);
+  top: 0px;
+  padding: 0px $p;
+
+  overflow: hidden;
+
+  .for {
+    font-size: 12px;
+    margin-top: 16px;
+    padding-bottom: 8px;
+
+    > p {
+      margin: 5px 0px;
+
+      b {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.chooseFlower {
+  margin-left: 5%;
+}
+
 .imgContainer {
   $h: 200px;
   width: 100%;
@@ -252,12 +298,38 @@ export default {
   }
 }
 
-#form {
+.form {
   clear: both;
+  margin: 10px 5%;
+
+  /deep/ {
+    label {
+      padding: 2px;
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .el-form-item {
+      margin-bottom: 8px;
+    }
+  }
 }
 
 progress {
   background-color: #333;
   width: 20%;
+}
+
+.btns {
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  bottom: 20px;
+  margin: 20px 0px;
+
+  button {
+    // background-color: #00000080;
+    // color: white;
+  }
 }
 </style>
