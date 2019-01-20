@@ -4,8 +4,10 @@
             <a-entity name='planet-surface' :position="`0 ${hoverDistance} 0`">
                 <b-flower :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="ps"
                           :play="play"></b-flower>
-                <!--<b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"-->
-                          <!--:play="play"></b-flower>-->
+                <a-box depth="2" width="2" height="4" position="0 2 0" visible="false" material="shader: flat; color: red; opacity:0" class="clickable" bounce-on-hover>
+                    <!--<b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"-->
+                    <!--:play="play"></b-flower>-->
+                </a-box>
             </a-entity>
         </a-entity>
     </a-entity>
@@ -71,9 +73,9 @@
                 flowerdata: {
                     moflower: {
                         color: 0xff0000,
-                        obj: ["#bromeliads-obj", "#papatest-gltf", "#monkey-gltf"],
+                        obj: ["#tree-gltf", "#papatest-gltf", "#tree-gltf"],
                         mtl: ["#bromeliads-mtl", "#", "#" ],
-                        ps: ["color: #EF0000,#44CC00; blending: 1; particleCount: 10", "color: #EF0000,#44CC00; blending: 1; particleCount: 10", "color: #000000,#FF0000; blending: 1; particleCount: 10"]
+                        ps: ["color: #EF0000,#44CC00; blending: 1; particleCount: 3; maxAge: 1;", "color: #EF0000,#44CC00; blending: 1; particleCount: 3; maxAge: 1;", "color: #000000,#FF0000; blending: 1; particleCount: 3; maxAge: 1;"]
                     },
                     monkeyflower: {
                         color: 0x00FF00,

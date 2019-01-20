@@ -5,7 +5,7 @@ import store from './store'
 import './registerServiceWorker'
 
 // import 'aframe'
-// import '@/utils/aframeComponents'
+import '@/utils/aframeComponents'
 
 import './plugins/element.js'
 

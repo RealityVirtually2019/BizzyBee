@@ -20,7 +20,6 @@ export default {
   data() {
     return {
       planetRadius: 7,
-      welcomeText: 'Welcome to the home of the Bee',
       msgs: [
         {
           name: 'Kai',
@@ -52,7 +51,7 @@ export default {
   },
   computed: {
     popMsgs() {
-      let MAX_FLOWERS = 5
+      let MAX_FLOWERS = 50
       let MAX_ROTATION = 360
       let MIN_DISTANCE = 0.88
       let DEGREES_TO_RADIANS = Math.PI / 180
