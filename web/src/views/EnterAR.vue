@@ -62,6 +62,14 @@ export default {
           () => (this.show = true)
         )
     },
+  },  
+  beforeCreate() {
+    var head = document.getElementsByTagName('head')[0]
+    var js = document.createElement("script");
+
+    js.type = "text/javascript";
+    js.src = "https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"
+    head.appendChild(js);
   },
   created() {},
 }
