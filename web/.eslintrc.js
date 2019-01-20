@@ -47,5 +47,8 @@ module.exports = {
   },
   globals: {
     THREE: true,
+    AFRAME: true,
+    TweenMax: true,
+    Bounce: true,
   },
 }
