@@ -80,7 +80,7 @@ import { db, storage } from '@/services/firebase'
 
 import { Glide, GlideSlide } from 'vue-glide-js'
 
-import '@/utils/recorder.js'
+// import '@/utils/recorder.js'
 
 export default {
   name: 'Gardening',
