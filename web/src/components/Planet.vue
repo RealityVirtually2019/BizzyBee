@@ -19,7 +19,7 @@
       <b-flowerHolder
               v-for="(msg, idx) in popMsgs" :key="idx"
               :planet-radius="planetRadius" :type="msg.flower" :rot-x="msg.rotationX"
-              :rot-y="msg.rotationY"
+              :rot-y="msg.rotationY" :voiceUrl="msg.voiceUrl" :msg="msg.msg"
               :stage="randomStage(idx)"></b-flowerHolder>
     </a-sphere>
 
@@ -81,7 +81,7 @@ export default {
 
         console.log('popMsgs', this.msgs)
 
-      let MAX_FLOWERS = 50
+      let MAX_FLOWERS = 10
       let MAX_ROTATION = 360
       let MIN_DISTANCE = 0.88
       let DEGREES_TO_RADIANS = Math.PI / 180
@@ -110,7 +110,7 @@ export default {
 
         do {
           // generate a random rotation and add it to the array
-          rotationX = Math.random() * MAX_ROTATION
+          rotationX = Math.random() * MAX_ROTATION;
           rotationY = Math.random() * MAX_ROTATION
 
           // check if the rotation is far enough away from the others and add their
@@ -174,6 +174,7 @@ export default {
             name: msgSrc[msgIndex].name,
             msg: msgSrc[msgIndex].msg,
             flower: msgSrc[msgIndex].flower,
+            voiceUrl: msgSrc[msgIndex].voiceUrl,
 
             // add the rotation values
             rotationX: rotationX,
