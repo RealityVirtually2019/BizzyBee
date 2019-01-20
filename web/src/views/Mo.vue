@@ -12,7 +12,7 @@
       <a-asset-item id="papatest-gltf" src="./flowers/papatest/papatest.gltf"></a-asset-item>
       <a-asset-item id="monkey-gltf" src="./flowers/Monkey/monkey.gltf"></a-asset-item>
     </a-assets>
-    <Flower :stage="stage" :modelids="flowerdata.moflower.obj" :mtlids="flowerdata.moflower.mtl" :ps="flowerdata.moflower.ps" />
+    <Flower :stage="stage" :modelids="flowerdata.moflower.obj" :mtlids="flowerdata.moflower.mtl" :ps="flowerdata.moflower.ps" :play="play"/>
   </a-scene>
   
 </template>
@@ -41,6 +41,7 @@ export default {
     return {
       flowerdata,
       stage: 0,
+      play: "true",
     }
   },
   components: {

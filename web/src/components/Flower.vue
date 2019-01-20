@@ -4,7 +4,7 @@
       <a-entity ref="localspace" scale="1 1 1">
         <!-- <a-obj-model class="flowermodel" src="#bromeliads-obj" mtl="#bromeliads-mtl"></a-obj-model> -->
         <a-gltf-model ref="modelgltf" class="gltfmodel" :src="modelids[stage]" :mtl="mtlids[stage]"></a-gltf-model>
-        <a-entity ref="parsys"></a-entity>  
+        <a-entity ref="parsys" :visible="play"></a-entity>  
       </a-entity>
   </a-entity>
 </template>
@@ -29,6 +29,10 @@ export default {
     ps: {
       type: Array,
       default: [""]
+    },
+    play: {
+      type: String,
+      default: "true"
     }
   },
   mounted() {
