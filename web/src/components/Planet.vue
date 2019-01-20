@@ -129,49 +129,48 @@ export default {
       soundtrack: null,
       planetRadius: 7,
       msgsD: [
-          {
-              "flower" : 1,
-              "msg" : "Take your sweet time getting well!",
-              "name" : "Kai",
-              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A19%3A06.719Z.wav?alt=media&token=2740145e-c859-43f7-b490-1ffdf36e897f"
-          },
-          {
-                "flower" : 2,
-              "msg" : "Hope it won’t be long till you’re out of the hospital.",
-              "name" : "MOMO",
-              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A20%3A37.377Z.wav?alt=media&token=3da97e0d-b1b1-4ac0-b727-a267f71cf4e8"
-          },
-          {
-              "flower" : 0,
-              "msg" : "Miss you around here!",
-              "name" : "Jason",
-              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A21%3A11.864Z.wav?alt=media&token=12dc47eb-c35f-4e6e-a993-15c58d2ae82d"
-          },
-          {
-              "flower" : 3,
-              "msg" : "We hope you’re taking it slow and easy right now.",
-              "name" : "Morris",
-              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A21%3A38.825Z.wav?alt=media&token=e1807a25-e12e-49bf-9be6-4f9320d81ef5"
-          },
-          {
-              "flower" : 4,
-              "msg" : "Hope you’re catching up on your cookbook reading!",
-              "name" : "Lydia",
-              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A23%3A06.044Z.wav?alt=media&token=c5b3f16c-dd04-411c-a4bf-8b6a80816748"
-          },
-          {
-              "flower" : 2,
-              "msg" : "Sending good, healthy vibes your way.",
-              "name" : "Janet",
-              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A23%3A49.625Z.wav?alt=media&token=ffb3df3d-bb57-4bb7-bfd8-b367e364ba8e"
-          },
-          {
-              "flower" : 1,
-              "msg" : "Hope you get to feeling better soon!",
-              "name" : "VVVVV",
-              "voiceUrl" : "https://firebasestorage.googleapis.com/v0/b/bizzy-bee.appspot.com/o/voices%2Fvoice-2019-01-20T17%3A24%3A27.774Z.wav?alt=media&token=e82027e6-bcf7-4bdd-82bd-8300c559cd4f"
-          }
-
+        {
+          flower: 1,
+          msg: 'Take your sweet time getting well!',
+          name: 'Kai',
+          voiceUrl: 'audio/v1.wav',
+        },
+        {
+          flower: 2,
+          msg: 'Hope it won’t be long till you’re out of the hospital.',
+          name: 'MOMO',
+          voiceUrl: 'audio/v2.wav',
+        },
+        {
+          flower: 0,
+          msg: 'Miss you around here!',
+          name: 'Jason',
+          voiceUrl: 'audio/v3.wav',
+        },
+        {
+          flower: 3,
+          msg: 'We hope you’re taking it slow and easy right now.',
+          name: 'Morris',
+          voiceUrl: 'audio/v4.wav',
+        },
+        {
+          flower: 4,
+          msg: 'Hope you’re catching up on your cookbook reading!',
+          name: 'Lydia',
+          voiceUrl: 'audio/v5.wav',
+        },
+        {
+          flower: 2,
+          msg: 'Sending good, healthy vibes your way.',
+          name: 'Janet',
+          voiceUrl: 'audio/v6.wav',
+        },
+        {
+          flower: 1,
+          msg: 'Hope you get to feeling better soon!',
+          name: 'VVVVV',
+          voiceUrl: 'audio/v7.wav',
+        },
       ],
       msg: '',
       lastPlayedSound: '',
@@ -296,11 +295,11 @@ export default {
     window.wmPlanet = this
 
     this.soundtrack = new Howl({
-        src: ['audio/Sakuro 190120-085434.aif', 'audio/Sakuro 190120-085434.mp3'],
-        volume: 0.3,
-        autoplay: true,
-        loop:true
-    });
+      src: ['audio/Sakuro 190120-085434.aif', 'audio/Sakuro 190120-085434.mp3'],
+      volume: 0.3,
+      autoplay: true,
+      loop: true,
+    })
   },
   methods: {
     randomStage(idx) {
