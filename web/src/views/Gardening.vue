@@ -146,22 +146,19 @@ export default {
 
     this.audio_context = new AudioContext()
 
-    navigator.getUserMedia({ audio: true }, this.startUserMedia, function(e) {
-      console.log('No live audio input: ' + e)
+    this.recorder = new Recorder(this.audio_context, {
+      // onAnalysed: data => console.log(data),
     })
+
+    navigator.mediaDevices
+      .getUserMedia({ audio: true })
+      .then(stream => this.recorder.init(stream))
+      .then(() => {
+        console.log('Recorder initialised.', this.recorder)
+      })
+      .catch(err => console.log('No live audio input: ', err))
   },
   methods: {
-    startUserMedia(stream) {
-      var input = this.audio_context.createMediaStreamSource(stream)
-      console.log('Media stream created.')
-      // Uncomment if you want the audio to feedback directly
-      //input.connect(audio_context.destination);
-      //__log('Input connected to audio context destination.');
-
-      // eslint-disable-next-line no-undef
-      this.recorder = new Recorder(input)
-      console.log('Recorder initialised.')
-    },
     recordVoice() {
       this.ready = false
 
@@ -171,70 +168,68 @@ export default {
         this.countDown -= 1
       }, 1000)
 
-      this.recorder.record()
-      setTimeout(() => {
-        this.stopRecord()
-        this.countDown = 0
+      this.recorder.start().then(() => {
+        setTimeout(() => {
+          this.stopRecord()
+          this.countDown = 0
 
-        clearInterval(countDownInterval)
-      }, sec * 1000)
+          clearInterval(countDownInterval)
+        }, sec * 1000)
+      })
     },
     stopRecord() {
-      this.recorder.stop()
-
-      // create WAV download link using audio data blob
-      this.uploadVoice()
-
-      this.recorder.clear()
+      this.recorder.stop().then(({ blob, buffer }) => {
+        // create WAV download link using audio data blob
+        this.uploadVoice(blob)
+        // this.recorder.clear()
+      })
     },
-    uploadVoice() {
+    uploadVoice(blob) {
       this.ready = false
 
-      this.recorder.exportWAV(blob => {
-        const url = URL.createObjectURL(blob)
-        console.log({ url, blob })
+      const url = URL.createObjectURL(blob)
+      console.log({ url, blob })
 
-        const uploader = this.$refs.uploader
+      const uploader = this.$refs.uploader
 
-        const uploadTime = new Date().toISOString()
-        const filename = `voice-${uploadTime}`
+      const uploadTime = new Date().toISOString()
+      const filename = `voice-${uploadTime}`
 
-        const filepath = `${filename}.wav`
-        //set storage ref
-        let storageRef = storage.ref('voices/' + filepath)
-        //upload file
-        let task = storageRef.put(blob)
-        task.on(
-          'state_changed',
-          // progress
-          snapshot => {
-            let percentage =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            uploader.value = percentage
-          },
-          // error
-          err => {
-            console.log(err)
-          },
-          // complete
-          () => {
-            console.log('complete upload')
+      const filepath = `${filename}.wav`
+      //set storage ref
+      let storageRef = storage.ref('voices/' + filepath)
+      //upload file
+      let task = storageRef.put(blob)
+      task.on(
+        'state_changed',
+        // progress
+        snapshot => {
+          let percentage =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          uploader.value = percentage
+        },
+        // error
+        err => {
+          console.log(err)
+        },
+        // complete
+        () => {
+          console.log('complete upload')
 
-            return storageRef
-              .getDownloadURL()
-              .then(url => {
-                console.log('got voice url', url)
+          return storageRef
+            .getDownloadURL()
+            .then(url => {
+              console.log('got voice url', url)
 
-                this.voiceUrl = url
-                uploader.value = 0
-                this.ready = true
-              })
-              .catch(error => {
-                console.error(error)
-              })
-          }
-        )
-      })
+              this.voiceUrl = url
+              uploader.value = 0
+              this.ready = true
+            })
+            .catch(error => {
+              console.error(error)
+            })
+        }
+      )
     },
     putSeed() {
       const msgsRef = db.ref(`gardens/${this.gardenKey}/msgs`)
