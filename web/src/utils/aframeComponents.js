@@ -23,10 +23,14 @@ AFRAME.registerComponent('bounce-on-hover', {
 
         this.el.removeEventListener('mouseenter', mouseenterHandler);
         this.el.removeEventListener('mouseleave', mouseleaveHandler);
+        this.el.removeEventListener('touchstart', mouseenterHandler);
+        this.el.removeEventListener('touchend', mouseleaveHandler);
 
         var data = this.data;
         this.el.addEventListener('mouseenter', mouseenterHandler);
         this.el.addEventListener('mouseleave', mouseleaveHandler);
+        this.el.addEventListener('touchstart', mouseenterHandler);
+        this.el.addEventListener('touchend', mouseleaveHandler);
 
     },
 });
