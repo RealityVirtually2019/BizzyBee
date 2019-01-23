@@ -1,3 +1,6 @@
+import { TweenMax, Bounce } from 'gsap/all'
+console.log('setup aframe components')
+
 function mouseenterHandler(){
     TweenMax.to(this.object3D.parent, 0.5, {three:{scale:1.3}, ease:Bounce.easeOut});
 

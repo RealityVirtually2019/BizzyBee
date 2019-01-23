@@ -7,9 +7,7 @@ module.exports = {
 
   chainWebpack: config => {
     config.externals({
-      TweenMax: 'TweenMax',
       AFRAME: 'AFRAME',
-      Bounce: 'Bounce',
     })
   },
 }
