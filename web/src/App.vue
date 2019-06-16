@@ -1,5 +1,8 @@
 <template>
-  <router-view id="app" />
+  <div id="app">
+    <router-view class="router-view" />
+    <ToMobile />
+  </div>
 </template>
 
 <style>
@@ -10,6 +13,18 @@
   font-family: 'Raleway', Helvetica, sans-serif;
 }
 </style>
+
+<script>
+// @ is an alias to /src
+import ToMobile from '@/views/ToMobile'
+
+export default {
+  name: 'App',
+  components: {
+    ToMobile,
+  },
+}
+</script>
 
 <style lang="scss">
 body {
@@ -23,8 +38,13 @@ body {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+
+  .router-view {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 h1 {
