@@ -13,7 +13,9 @@ import VueFire from 'vuefire'
 Vue.use(VueFire)
 
 import Timeago from 'vue-timeago'
-Vue.use(Timeago)
+Vue.use(Timeago, {
+  locale: 'en',
+})
 
 import VueGlide from 'vue-glide-js'
 import 'vue-glide-js/dist/vue-glide.css'
