@@ -2,7 +2,7 @@
   <div class="gardener">
     <Planet embedded position="0 0 -13"></Planet>
     <div class="header">
-      <h1 class="title" @click="goHome">BizzyBee</h1>
+      <h1 class="title" @click="goHome">GARDENCARDS</h1>
       <p class="desc">{{ garden.desc }}</p>
       <div class="for">
         <p class="forWho">
@@ -12,7 +12,7 @@
           <span>Deliver </span><b><timeago :datetime="garden.sendItAt"/></b>
         </p>
       </div>
-      <el-button class="btnShare" @click="shareGardener">Share</el-button>
+      <el-button class="btnShare" round @click="shareGardener">Share</el-button>
     </div>
     <div class="btns">
       <el-button @click="addFlower">Let's Plant Flower</el-button>
@@ -99,14 +99,13 @@ export default {
 
 <style lang="scss" scoped>
 .gardener {
-  color: white;
-  text-shadow: 1px 1px 4px #00000080;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .title {
   text-align: center;
-  font-size: 48px;
   margin: 5px 0px;
+  font-size: 10vw;
 }
 
 .header {
@@ -115,8 +114,7 @@ export default {
   position: fixed;
   top: 0px;
   padding: 0px $p;
-  // background-color: #69a5d396;
-  background-color: #00000096;
+  background-color: rgba(255, 255, 255, 0.7);
 
   overflow: hidden;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
@@ -136,7 +134,9 @@ export default {
     > p {
       margin: 5px 0px;
 
+      font-weight: lighter;
       b {
+        font-weight: normal;
         font-size: 14px;
       }
     }
@@ -148,8 +148,9 @@ export default {
     bottom: 10px;
 
     background-color: transparent;
-    color: white;
-    border-width: 0px;
+    color: $normal;
+    border-width: 1px;
+    border-color: $normal;
   }
 }
 
