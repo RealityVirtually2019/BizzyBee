@@ -2,7 +2,7 @@ module.exports = {
   baseUrl: '',
 
   pwa: {
-    themeColor: '#000000',
+    themeColor: '#4F2E7C',
   },
 
   chainWebpack: config => {

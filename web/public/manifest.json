@@ -16,6 +16,6 @@
   "scope": "/BizzyBee/",
   "start_url": "/BizzyBee/index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000"
+  "background_color": "#4F2E7C",
+  "theme_color": "#4F2E7C"
 }
