@@ -2,6 +2,15 @@
   <router-view id="app" />
 </template>
 
+<style>
+/* https://fonts.google.com/specimen/Raleway?selection.family=Raleway:200,200i,400,400i,700,700i */
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,200i,400,400i,700,700i&display=swap&subset=latin-ext');
+
+* {
+  font-family: 'Raleway', Helvetica, sans-serif;
+}
+</style>
+
 <style lang="scss">
 body {
   margin: 0px;
