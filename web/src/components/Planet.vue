@@ -90,14 +90,14 @@
     >
       <!--<a-light type="ambient" color="#ffffff" intensity="" ></a-light>-->
       <b-flowerHolder
-        v-for="(msg, idx) in popMsgs"
+        v-for="(_msg, idx) in popMsgs"
         :key="idx"
         :planet-radius="planetRadius"
-        :type="msg.flower"
-        :rot-x="msg.rotationX"
-        :rot-y="msg.rotationY"
-        :voiceurl="msg.voiceurl"
-        :msg="`${msg.msg} \n by [${msg.name}]`"
+        :type="_msg.flower"
+        :rot-x="_msg.rotationX"
+        :rot-y="_msg.rotationY"
+        :voiceurl="_msg.voiceurl"
+        :msg="`${_msg.msg} \n by [${_msg.name}]`"
         :stage="randomStage(idx)"
       ></b-flowerHolder>
       <a-sphere :radius="5" class="clickable"></a-sphere>
