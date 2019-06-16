@@ -23,6 +23,10 @@ Vue.use(VueGlide)
 
 Vue.config.productionTip = false
 
+import Banner from '@/components/Banner'
+
+Vue.component('Banner', Banner)
+
 new Vue({
   router,
   store,
