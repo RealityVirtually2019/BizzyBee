@@ -37,7 +37,7 @@ h1 {
 }
 
 p,
-.formFill {
+.label {
   font-size: 15px;
   line-height: 20px;
   letter-spacing: 0.04em;
@@ -60,5 +60,4 @@ p,
   background-color: $secondary !important;
   border-width: 0px !important;
 }
-
 </style>
