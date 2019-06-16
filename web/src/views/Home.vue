@@ -2,7 +2,7 @@
   <a-scene>
     <!-- <a-sphere position="0 1.25 -5" radius="3.5" color="#EF2D5E"></a-sphere> -->
     <a-sky color="#ECECEC"></a-sky>
-    <Flower :stage="2"/>
+    <Flower :stage="2" />
   </a-scene>
 </template>
 

@@ -1,16 +1,29 @@
 <template>
-  <a-entity name='x-axis' :rotation="`${offsetX} 0 0`">
-    <a-entity name='y-axis' :rotation="`0 0 ${offsetY}`">
-      <a-entity name='planet-surface' :position="`0 ${hoverDistance} 0`">
-        <b-flower :stage="stage" :modelids="modelids" :mtlids="mtlids"
-                  :ps="ps" ref="flower"
-                  :play="play"></b-flower>
-        <a-box depth="2" width="2" height="4"
-               position="0 2 0" visible="false"
-               material="shader: flat; color: red; opacity:0.2" class="clickable" bounce-on-hover
-               :msg="msg" :voiceurl="voiceurl">
-               <!--<b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"-->
-               <!--:play="play"></b-flower>-->
+  <a-entity name="x-axis" :rotation="`${offsetX} 0 0`">
+    <a-entity name="y-axis" :rotation="`0 0 ${offsetY}`">
+      <a-entity name="planet-surface" :position="`0 ${hoverDistance} 0`">
+        <b-flower
+          ref="flower"
+          :stage="stage"
+          :modelids="modelids"
+          :mtlids="mtlids"
+          :ps="ps"
+          :play="play"
+        ></b-flower>
+        <a-box
+          depth="2"
+          width="2"
+          height="4"
+          position="0 2 0"
+          visible="false"
+          material="shader: flat; color: red; opacity:0.2"
+          class="clickable"
+          bounce-on-hover
+          :msg="msg"
+          :voiceurl="voiceurl"
+        >
+          <!--<b-flower bounce-on-hover :stage="stage" :modelids="modelids" :mtlids="mtlids" :ps="flowerdata.moflower.ps"-->
+          <!--:play="play"></b-flower>-->
         </a-box>
       </a-entity>
     </a-entity>
@@ -122,15 +135,15 @@ export default {
         flower4: {
           color: 0xff0000,
           obj: [
-              '#Flower_5_sprout-dae',
-              '#Flower_5_sapling-dae',
-              '#Flower_5_bloom-dae',
+            '#Flower_5_sprout-dae',
+            '#Flower_5_sapling-dae',
+            '#Flower_5_bloom-dae',
           ],
           mtl: ['#', '#', '#'],
           ps: [
-              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
-              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
-              'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
+            'color: #F79563,#F9ECA0; blending: 1; particleCount: 10; maxAge: 1; size: 0.3; velocityValue: 0 0.5 0; maxParticleCount:500',
           ],
         },
       },
@@ -153,17 +166,16 @@ export default {
     // Once we have the final object, work on the sizing
     // this.hoverDistance = this.planetRadius + (this.$refs.flowerHolder.getAttribute('height')) * 0.5;
     // this.hoverDistance = this.planetRadius + .65;
-    this.hoverDistance = this.planetRadius - 0.2;
+    this.hoverDistance = this.planetRadius - 0.2
 
     // set the rotation of the objects
     this.offsetX = this.rotX
     this.offsetY = this.rotY
 
-      // scale the flowers down a bit
-      if(this.$refs.flower && this.$refs.flower.object3D){
-        this.$refs.flower.object3D.scale.set(0.7, 0.7, 0.7);
-      }
-
+    // scale the flowers down a bit
+    if (this.$refs.flower && this.$refs.flower.object3D) {
+      this.$refs.flower.object3D.scale.set(0.7, 0.7, 0.7)
+    }
   },
 }
 </script>

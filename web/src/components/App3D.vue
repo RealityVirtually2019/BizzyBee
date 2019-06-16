@@ -1,12 +1,27 @@
 <template>
   <a-scene>
     <a-assets>
-      <a-asset-item id="bromeliads-obj" src="./flowers/Bromeliads/Bromeliads.obj"></a-asset-item>
-      <a-asset-item id="bromeliads-mtl" src="./flowers/Bromeliads/Bromeliads.mtl"></a-asset-item>
+      <a-asset-item
+        id="bromeliads-obj"
+        src="./flowers/Bromeliads/Bromeliads.obj"
+      ></a-asset-item>
+      <a-asset-item
+        id="bromeliads-mtl"
+        src="./flowers/Bromeliads/Bromeliads.mtl"
+      ></a-asset-item>
 
-      <a-asset-item id="papatest-gltf" src="./flowers/papatest/papatest.gltf"></a-asset-item>
-      <a-asset-item id="tree-gltf" src="./models/example_flower.glb"></a-asset-item>
-      <a-asset-item id="monkey-gltf" src="./flowers/Monkey/monkey.gltf"></a-asset-item>
+      <a-asset-item
+        id="papatest-gltf"
+        src="./flowers/papatest/papatest.gltf"
+      ></a-asset-item>
+      <a-asset-item
+        id="tree-gltf"
+        src="./models/example_flower.glb"
+      ></a-asset-item>
+      <a-asset-item
+        id="monkey-gltf"
+        src="./flowers/Monkey/monkey.gltf"
+      ></a-asset-item>
     </a-assets>
 
     <a-sky color="#ECECEC"></a-sky>
@@ -16,7 +31,6 @@
     </a-camera>
 
     <Planet></Planet>
-
   </a-scene>
 </template>
 
