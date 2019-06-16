@@ -1,28 +1,20 @@
 <template>
   <div class="entry">
-    <!-- <iframe
-      :src="
-        `https://www.youtube.com/embed/${youtubeId}?playlist=${youtubeId}&rel=0&playsinline=1&fs=0&disablekb=1&controls=0&modestbranding=1&autoplay=${autoplay}&loop=1&mute=${mute}`
-      "
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-    >
-    </iframe> -->
+    <Banner text="Entry" />
 
-    <h1 class="title">BizzyBee</h1>
-    <img class="logo" src="@/assets/logo.png" alt="" />
+    <h1 class="title">GARDENCARDS</h1>
+    <!-- <img class="logo" src="@/assets/logo.png" alt="" /> -->
     <p class="desc">
-      You create a world in minutes with our simple designer app, then invite
-      friends and family to contribute to this growing garden. Your friend will
-      receive the card and with two simple clicks they can be transported to a
-      world made just for them by their loved ones.
+      The interactive greeting card that blooms to life on any device with your
+      well wishes and recorded messages.
     </p>
+
     <div class="btns">
-      <el-button class="buildBtn" @click="goBuild">Build Garden</el-button>
-      <br />
-      <el-button class="howItWorkBtn" size="mini" @click="goBuild">
-        See How it Works
+      <el-button round class="btn buildBtn" @click="goBuild">
+        Get Start
+      </el-button>
+      <el-button round class="btn howItWorkBtn" @click="goBuild">
+        Learn More
       </el-button>
     </div>
   </div>
@@ -51,13 +43,15 @@ export default {
 <style lang="scss" scoped>
 .entry {
   text-align: center;
-  background-color: #65c18f;
+  background: white url(~@/assets/img/bg-planet.png) no-repeat fixed center;
+  background-size: cover;
 }
 
 .title {
   color: white;
-  font-size: 64px;
-  margin: 5px 0px;
+  font-size: 36px;
+  margin: 5px 10px;
+  margin-top: 20%;
 }
 
 .logo {
@@ -69,16 +63,18 @@ export default {
   text-align: justify;
   color: white;
   text-shadow: 1px 1px 4px #00000080;
-  margin: 5px 25px;
+
+  margin: 10px;
+  background-color: #ffffff40;
+  padding: 1em;
 }
 
 .btns {
-  margin-top: 20px;
+  margin: 20px 10px;
+  text-align: right;
 
   button {
-    margin: 5px 0px;
-    background: transparent;
-    color: white;
+    margin: 5px 5px;
   }
 }
 </style>
