@@ -1,7 +1,8 @@
 <template>
   <div class="gardening">
+    <Banner text="Plant a Flower" />
+
     <div class="header">
-      <h1 class="title">BizzyBee</h1>
       <div class="for">
         <p class="forWho">
           This is for <b>{{ garden.name }}</b>
@@ -67,7 +68,7 @@
       ></progress>
     </div>
     <div class="btns">
-      <el-button :disabled="!ready || !name" @click="putSeed">
+      <el-button class="btn" :disabled="!ready || !name" round @click="putSeed">
         Put the seed
       </el-button>
     </div>
@@ -275,7 +276,9 @@ export default {
     > p {
       margin: 5px 0px;
 
+      font-weight: lighter;
       b {
+        font-weight: normal;
         font-size: 14px;
       }
     }
